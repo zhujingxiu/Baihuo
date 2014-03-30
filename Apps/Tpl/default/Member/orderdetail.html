@@ -1,0 +1,51 @@
+<include file="Member:header" />
+    <div class="memberbox">
+        <div class="memberleft">
+            <include file="Member:left" />
+        </div>
+        <div class="memberright">
+            <div class="member_detail">订单详细</div>
+            <div class="orderinfo">
+                <ul>
+                    <li>订单编号：{$vo.orderid}</li>
+                    <li>订单状态：{$vo.status|getOrderStatus}</li>
+                    <li>订购时间：{$vo.create_time|toDate="Y-m-d H:i:s"}</li>
+                    <li>备注：{$vo.remark}</li>
+                </ul>
+            </div>
+            <div class="prolist">
+                <table style="width: 80%; height: 28px; line-height: 28px; margin: 0; border: 1px solid #FFBE7A;" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <th>&nbsp;&nbsp;商品信息</th>
+                        <th>单价</th>
+                        <th>数量</th>
+                        <th>合计</th> 
+                    </tr>
+                    <volist name='list' id='vo1'>
+                    <tr>
+                        <td>
+                            <img src="__ROOT__/Uploads{$vo1['sub_list']['thumb']}" width="60" height="60" style="float: left; border: 1px solid #F2F2F2; margin: 8px;" />
+                            <div style="margin-left: 20px; height: 60px; line-height: 60px; float: left; display: inline;">
+                            {$vo1['sub_list']['title']}
+                            </div>
+                        </td>
+                        <td>￥{$vo1.price}</td>
+                        <td>{$vo1.num}</td>
+                        <td>￥{$vo1.allprice}</td>
+                    </tr>
+                    </volist>
+                    </tbody>
+                </table>
+            </div>
+            <div class="orderother">
+                <div class="ordertitle">物流信息</div>
+                <div class="ordertext">收货信息：{$vo.name}&nbsp;{$vo.tel}&nbsp;{$vo.address}</div>
+            </div>
+            <div class="orderother">
+                <div class="ordertitle">消费金额</div>
+                <div class="ordertext">商品合计（￥{$vo.totalprice}）</div>
+            </div>
+        </div>
+    </div>
+<include file="Public:footer" />

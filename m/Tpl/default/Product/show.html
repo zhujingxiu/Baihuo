@@ -1,0 +1,14 @@
+<include file="Public:top" />
+    <include file="Public:header" />
+        <div data-role="content">              
+            <img src="__ROOT__/Uploads{$data.thumb}" style="width: 290px; height: 290px;" /><br>
+            商品名称：{$data.title}<br>
+            价格：￥{$data.price}<br>
+            商品规格：{$data.guige}<br>
+            上架时间：{$data.create_time|toDate='Y-m-d'}<br>
+            浏览次数：{$data.hits}<br>
+            商品描述：{$data.content}
+            <div>上一个：<empty name="prevdata">第一个<else /><a href="{:U('Product/show',array('id'=>$prevdata['id']))}" target="_blank">{$prevdata['title']|msubstr=0,20}</a></empty></div>
+            <div>下一个：<empty name="nextdata">最后一个<else /><a href="{:U('Product/show',array('id'=>$nextdata['id']))}" target="_blank">{$nextdata['title']|msubstr=0,20}</a></empty></div>
+        </div>
+<include file="Public:bottom" />

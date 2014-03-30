@@ -1,0 +1,45 @@
+<include file="Member:header" />
+<script type="text/javascript">
+    $(function(){
+       $("#form1").ajaxForm({
+            success:  complete, 
+            dataType: 'json'
+        });
+
+        function complete(data){
+            alert(data.info);
+        }
+    });
+</script>
+<div class="memberbox">   
+    
+    
+        <div class="memberleft">
+            <include file="Member:left" />
+        </div>
+        <div class="memberright">
+            <div class="member_detail">修改资料</div>
+            <form method='post' id="form1" name="form1" action="{:U('Member/change')}"  enctype="multipart/form-data">
+                <table border="0" cellspacing="3" cellpadding="3">
+                    <tbody>
+                        <tr>
+                            <th>昵称：</th>
+                            <td><input type="text" class="ipt3" name="nickname" value="{$vo.nickname}" /></td>
+                        </tr>
+                     
+                        <tr>
+                            <th>电子邮箱：</th>
+                            <td><input type="text" class="ipt6" name="email" value="{$vo.email}" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="form_b">
+                    <input type="hidden" name="id" value="{$vo.id}">
+                    <input type="submit" class="submit btn7" id="submit" value="提 交">
+                </div>
+            </form>
+        </div>
+
+</div>
+<include file="Public:footer" />

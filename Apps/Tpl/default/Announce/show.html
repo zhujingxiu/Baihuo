@@ -1,0 +1,25 @@
+<include file="Public:header" />
+    <div id="main">
+    	<div class="main_left">
+            <include file="Public:left" />
+        </div>
+        <div class="main_right">
+        	<div class="content">
+            	<div class="content_top">官方公告</div>
+                <div class="content_news">
+                	<div class="title">
+                    	<h2>{$data.title}</h2>
+                        <div class="info"><span>发布时间：{$data.create_time|toDate='Y-m-d'}</span><span></span></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="disdoc">
+                    	{$data.content}
+                    </div>
+                    
+                </div>
+               
+            </div>
+           
+        </div>
+    </div>
+<include file="Public:footer" />

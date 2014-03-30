@@ -1,0 +1,8 @@
+#
+# robots.txt for YUFUCMS v3.0
+#
+User-agent: * 
+Disallow: /admin
+Disallow: /Core
+Disallow: /install
+Disallow: /Data

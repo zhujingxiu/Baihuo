@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$title}</title>
+<meta name="keywords" content="{$keywords}" />
+<meta name="description" content="{$description}" />
+<link href="../Public/css/basic.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.0.min.js"></script>
+<load href="../Public/js/slider.js" />
+</head>
+<body class="bodybg">
+    <div class="head section clearfix">
+    	<a href="__APP__"><img src="__ROOT__/Uploads<yufu:set settag="logo" />" /></a>
+        <div class="headr">
+            <span class="phone">025-57324358</span>
+            <a href="#">设为首页</a><a href="#">加入收藏</a><a href="#">联系我们</a>
+        </div>
+
+    </div>
+    <div class="navbg">
+        <div class="section">
+            <ul class="nav">
+                <li id="nav_0"><h3><a href="__APP__">首页</a></h3></li>
+                <volist name="nav_list" id="vo">
+                    <li id="nav_{$vo.id}">
+                        <h3><a href="{$vo.url}">{$vo.catname}</a></h3>
+                        <notempty name="vo.sub_nav">
+                        <div class="nav-a">
+                            <volist name="vo.sub_nav" id="sub">
+                                <a href="{$sub.url}">{$sub.catname}</a>
+                            </volist>
+                        </div>
+                        </notempty>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+        
+    </div>
+    <div class="section">
+        <!-- 焦点图 -->
+        <div id="DestpicFlow">
+            <ul class="Slides">
+                <yufu:slide field="id,title,url,img" order="listorder desc" num="5">
+                <li style="display: none; position: absolute; top: 0pt; left: 0pt; z-index: 1; opacity: 1;">
+                    <a href="{$slide.url}" target="_blank"><img src="__UPLOADS__{$slide.img}" alt="{$slide.title}"  width="1000"/></a>
+                </li>
+                </yufu:slide>
+            </ul>
+            <ul class="SlideTriggers">
+                <yufu:slide field="id" order="listorder desc" num="5">
+                <li <eq name="key" value="0">class="Current"</eq>>{$key+1}</li>
+                </yufu:slide>
+            </ul>
+        </div>
+        <script type="text/javascript">TB.widget.SimpleSlide.decorate('DestpicFlow', {eventType:'mouse', effect:'fade'});</script>
+    </div>
+

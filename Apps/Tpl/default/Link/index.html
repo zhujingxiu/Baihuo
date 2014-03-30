@@ -1,0 +1,24 @@
+<include file="Public:header" />
+    <div id="main">
+    	<div class="main_left">
+            <include file="Public:left" />
+        </div>
+        <div class="main_right">
+        	<div class="content">
+            	<div class="content_top">友情链接</div>
+                <div class="content_main" style="padding:0 10px;">
+                	<volist name="list" id="vo">
+                            <if condition="$vo['type'] eq 1 ">
+                                <if condition="$vo['linktype'] eq 0">
+                                <a href="{$vo.url}" target="_blank">{$vo.name}</a>|
+                                <else />
+                                <a href="{$vo.url}" target="_blank"><img src="__ROOT__/Uploads{$vo.logo}" alt="{$vo.name}" /></a>|
+                                </if>
+                            </if>
+                        </volist>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+<include file="Public:footer" />

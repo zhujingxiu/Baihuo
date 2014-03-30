@@ -1,0 +1,67 @@
+<include file="Member:header" />
+<script language="JavaScript">
+    $(function(){
+        
+        $('#form1').ajaxForm({
+            beforeSubmit:  checkForm, 
+            success:       complete, 
+            dataType: 'json'
+        });
+
+        function checkForm(){
+            if( '' === $.trim($('#account').val())){
+                alert('用户名不能为空');
+                return false;
+            }
+
+        }
+        function complete(data){
+            if (data.status===1){
+                window.location.href=data.url;
+                
+            }else{
+                alert(data.info);
+                fleshVerify();
+            }
+        }
+    });
+    function fleshVerify(){ 
+        //重载验证码
+        $('#verifyImg').attr('src',"{:U('Member/verify',array('t'=>time()))}");
+    }
+</script>
+    <div class="memberbox">
+    
+    <div class="memberbox_left">
+        <h1>会员登录</h1>
+    <form method='post' id="form1" action="{:U('Member/checkLogin')}" >      
+        <table cellpadding=3 cellspacing=3 >
+            <tr>
+                <td>用户名：</td>
+                <td><input type="text" id="account" name="account"></td>
+            </tr>
+            <tr>
+                <td>密 码：</td>
+                <td><input type="password" id="password" name="password"></td>
+            </tr>
+            <tr>
+                <td>验证码：</td>
+                <td>
+                    <input type="text" style="width: 95px;" id="verify" name="verify"> 
+                    <img id="verifyImg" src="{:U('Member/verify')}" onClick="fleshVerify()" border="0" alt="点击刷新验证码" style="cursor:pointer" align="absmiddle">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="center"><input type="submit" id="submit" value="登 录" class="submit medium hMargin"></td>
+            </tr>
+        </table>
+    </form>
+    </div>
+    <div class="memberbox_right">
+            <div style="font-size: 18px; margin-bottom: 20px;">还不是会员</div>
+            <div style="margin-bottom: 20px;"><a href="{:U('Member/register')}">注册</a></div>
+            <div><a href="__APP__">返回首页</a></div>
+    </div>
+    </div>
+<include file="Public:footer" />

@@ -1,0 +1,79 @@
+<include file="Public:header" />
+    <!-- 百货简介 -->
+    <div class="section">
+        <div class="clearfix mart10">
+            <div class="boxnav">
+                <h3>楼层导航</h3>
+                <yufu:other settag="shopping_guide" />
+            </div>
+            <div class="boxnav-r">
+                <div class="jianj">
+                    <h4>百货大厦简介</h4>
+                    <div class="jianj-d clearfix">
+                        <yufu:other settag="mini_intro" />
+                    </div>
+                </div>
+                <div class="index-news">
+                    <h4>集团新闻</h4>
+                    <ul>
+                        <yufu:article catid="1" field="id,title,create_time" order="create_time desc" num="5" >
+                        <li><em class="time">{$article.create_time|date="Y-m-d",###}</em><a href="{:U('Article/show',array('id'=>$article['id']))}">{$article.title|msubstr=0,25}</a></li>
+                        </yufu:article>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 精品推荐 -->
+    <div class="section">
+        <div class="jp-box mart10">
+            <h3><a href="#" class="more">more...</a>精品推荐</h3>
+            <div id="demo" style="width:978px; height:195px;overflow:hidden;">
+                <yufu:other settag="manufacturer_slider" />
+            </div>
+        </div>
+    </div>
+    <!-- 百货促销 -->
+    <div class="section">
+        <div class="box2 clearfix mart10">
+        	<div class="cx">
+                <h3><a href="{:U('Article/index',array('id'=>'44'))}" class="more" target="_blank">more</a>百货促销信息</h3>
+                <div class="cx-box clearfix">
+                    <p class="pic">
+                        <a href="#"><img src="images/pic1.jpg" width="125" height="80" /><b>提升城市功能品质 加快美</b></a>
+                    </p>
+                     <ul>
+                        <yufu:article catid="44" field="id,title,create_time" order="create_time desc" num="5" >
+                            <li><em class="time">{$article.create_time|toDate="Y-m-d"}</em><a href="{:U('Article/show',array('id'=>$article['id']))}" target="_blank">{$article.title|msubstr=0,22}</a></li>
+                        </yufu:article>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="zx-dt">
+                <h3><a href="#" class="more">[更多]</a>最新动态</h3>
+                 <ul class="dx">                   
+                    <yufu:announce field="id,title,create_time" order="create_time desc" num="5" >
+                    <li><em class="time">{$announce.create_time|toDate="Y-m-d"}</em><a href="{:U('Announce/show',array('id'=>$announce['id']))}" target="_blank">{$announce.title|msubstr=0,25}</a></li>
+                    </yufu:announce>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+<div class="clear"></div>
+<!-- 友情链接 -->
+<div class="section">
+    <div class="link mart10"><i></i>
+    <volist name="list" id="vo">
+        <if condition="$vo['type'] eq 0 ">
+            <if condition="$vo['linktype'] eq 0">
+            <a href="{$vo.url}" target="_blank">{$vo.name}</a>
+            <else />
+            <a href="{$vo.url}" target="_blank"><img src="__ROOT__/Uploads{$vo.logo}" alt="{$vo.name}" /></a>
+            </if>
+        </if>
+    </volist>
+    </div>
+</div>
+<include file="Public:footer" />

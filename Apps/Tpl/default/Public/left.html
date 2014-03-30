@@ -1,0 +1,10 @@
+<dl class="left-list">
+    <dt><em>关于百货</em>About</dt>
+    <dd class="left-l-tab">
+        <ul class="tab-list">
+            <yufu:category catid="12">
+                <li <if condition="$category['id'] eq I('id')">class="tabon"</if>><a href="{:U('Content/index',array('id'=>$category['id']))}">{$category.catname}</a></li> 
+            </yufu:category>
+        </ul>
+    </dd>
+</dl>

@@ -1,0 +1,22 @@
+<include file="Public:header" />
+    <div id="main">
+    	<div class="main_left">
+            <include file="Public:left" />
+        </div>
+        <div class="main_right">
+        	<div class="content">
+            	<div class="content_top">{$data.catname}</div>
+                <div class="content_news">
+                    <ul>
+                        <volist name="list" id="vo">
+                    	<li><a href="{:U('Article/show',array('id'=>$vo['id']))}" target="_blank">{$vo.title}</a><span>{$vo.create_time|toDate='Y-m-d'}</span></li>
+                        </volist>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="page">{$page}</div>
+            </div>
+           
+        </div>
+    </div>
+<include file="Public:footer" />

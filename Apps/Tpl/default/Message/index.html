@@ -1,0 +1,75 @@
+<include file="Public:header" />
+    <script language="JavaScript">
+    <!--
+    $(function(){
+        $('#form1').ajaxForm({
+            beforeSubmit:  checkForm, 
+            success:       complete, 
+            dataType: 'json'
+        });
+        function checkForm(){
+            if( '' == $.trim($('#name').val())){
+                alert('联系人不能为空');
+                return false;
+            }
+            if( '' == $.trim($('#content').val())){
+                alert('内容不能为空');
+                return false;
+            }
+            //可以在此添加其它判断
+        }
+        function complete(data){
+            if (data.status==1){
+                alert(data.info);
+            }else{
+                alert(data.info);
+            }
+        }
+    });
+    //-->
+    </script>
+    <div id="main">
+    	<div class="main_left">
+            <include file="Public:left" />
+        </div>
+        <div class="main_right">
+            <div class="content">
+            	<div class="content_top">在线留言</div>
+                <div class="content_news">
+                    <form method='post' id="form1" name="form1" action="{:U('Message/index')}">
+                        <table cellpadding=3 cellspacing=3 >
+                        <tr>
+                            <td class="tRight" width="10%"联系人：</td>
+                                <td class="tLeft" ><input type="text" class="medium bLeft" name="name" id="name" ><span style="color:red">*</span></td>
+                        </tr>
+                        <tr>
+                                <td class="tRight" width="10%">性&nbsp;&nbsp;&nbsp;&nbsp;别：</td>
+                                <td class="tLeft" ><input type="radio" name="sex" value="0" checked="checked" />&nbsp;男&nbsp;&nbsp;<input type="radio" name="sex" value="1" />&nbsp;女</td>
+                        </tr>
+                        <tr>
+                                <td class="tRight" width="12%">联系电话：</td>
+                                <td class="tLeft" ><input type="text" class="medium bLeft" name="tel"></td>
+                        </tr>
+                        <tr>
+                                <td class="tRight" width="10%">联系QQ：</td>
+                                <td class="tLeft" ><input type="text" class="medium bLeft" name="qq"></td>
+                        </tr>
+                        <tr>
+                                <td class="tRight" width="22%">电子邮箱：</td>
+                                <td class="tLeft" ><input type="text" class="medium bLeft" name="email"></td>
+                        </tr>
+                        <tr>
+                            <td class="tRight tTop" >留言内容：</td>
+                            <td><textarea id="content" name="content" class="large bLeftRequire" rows="8" cols="50"></textarea><span style="color:red">*</span></td>
+                        </tr>
+                        <tr>
+                            <td><input type="hidden" name="ajax" value="1"></td>
+                            <td class="center"><div style="width:85%;margin:5px"><input type="submit" value="保 存"  class="button small">&nbsp;&nbsp;<input type="reset" class="button small" value="重 置" ></div></td>
+                        </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<include file="Public:footer" />

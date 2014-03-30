@@ -1,0 +1,29 @@
+<include file="Public:header" />
+    <div class="section ">
+    	<div class="main_left">
+            <include file="Public:left" />
+        </div>
+        <div class="main_right">
+        	<div class="content">
+            	<div class="content_top">{$positionname}</div>
+                <div class="content_news">
+                    <div class="title">
+                    	<h2>{$data.title}</h2>
+                        <div class="info"><span>发布时间：{$data.create_time|toDate='Y-m-d'}</span><span>浏览&nbsp;{$data.hits}&nbsp;次</span></div>
+                    </div>
+
+                    <div class="clear"></div>
+                    <div class="disdoc">
+                    	{$data.content}
+                    </div>
+                    <div class="prev_next_nav">
+                        <div class="prev">上一篇：<empty name="prevdata">第一篇<else /><a href="{:U('Article/show',array('id'=>$prevdata['id']))}" target="_blank">{$prevdata['title']|msubstr=0,20}</a></empty></div>
+                        <div class="next">下一篇：<empty name="nextdata">最后一篇<else /><a href="{:U('Article/show',array('id'=>$nextdata['id']))}" target="_blank">{$nextdata['title']|msubstr=0,20}</a></empty></div>
+                    </div>
+                </div>
+               
+            </div>
+           
+        </div>
+    </div>
+<include file="Public:footer" />

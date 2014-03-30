@@ -1,0 +1,28 @@
+<include file="Member:header" />
+    <div class="memberbox">
+        
+        <div class="memberleft">
+            <include file="Member:left" />
+        </div>
+        <div class="memberright">
+           <div class="member_detail">个人主页</div>
+           <table border="0" cellspacing="3" cellpadding="3">
+                <tbody>
+                    <tr>
+                        <th style="text-align: right;">用户名：</th>
+                        <td style="text-align: left;">{$data.account}</td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: right;">昵称：</th>
+                        <td style="text-align: left;">{$data.nickname}</td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: right;">电子邮箱：</th>
+                        <td style="text-align: left;">{$data.email}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+ 
+    </div>
+<include file="Public:footer" />

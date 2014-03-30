@@ -1,0 +1,22 @@
+<include file="Public:header" />
+<div class="main">
+    <div class="box_tit">
+        <h2>系统信息</h2>
+    </div>
+
+    <div class="list">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+            
+            <volist name="info" id="v">
+            <tr>
+                <td style="text-align: right; width: 150px;">{$key}：</td>
+                <td style="text-align: left;">{$v}</td>
+            </tr>
+            </volist>
+            </tbody>
+        </table>
+ 
+    </div>
+</div>
+<include file="Public:footer" />

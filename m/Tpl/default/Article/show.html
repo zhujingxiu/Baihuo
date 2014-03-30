@@ -1,0 +1,10 @@
+<include file="Public:top" />
+    <include file="Public:header" />
+            <div data-role="content">
+                <h3>{$data.title}</h3>
+                 <span style="font-size: 12px;">发布时间：{$data.create_time|toDate='Y-m-d'}</span>
+                 {$data.content}
+                 <div>上一篇：<empty name="prevdata">第一篇<else /><a href="{:U('Article/show',array('id'=>$prevdata['id']))}" target="_blank">{$prevdata['title']|msubstr=0,20}</a></empty></div>
+                 <div>下一篇：<empty name="nextdata">最后一篇<else /><a href="{:U('Article/show',array('id'=>$nextdata['id']))}" target="_blank">{$nextdata['title']|msubstr=0,20}</a></empty></div>
+            </div> 
+<include file="Public:bottom" />

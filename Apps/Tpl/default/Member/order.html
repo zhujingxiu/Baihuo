@@ -1,0 +1,31 @@
+<include file="Member:header" />
+    <div class="memberbox">
+
+            <div class="memberleft">
+                <include file="Member:left" />
+            </div>
+            <div class="memberright">
+                <div class="member_detail">订单查询</div>
+               <table width="80%" border="0" cellspacing="3" cellpadding="3" class="member_order">
+                    <tbody>
+                        <tr>
+                            <th>订单编号</th>
+                            <th>订购时间</th>
+                            <th>订单金额</th>
+                            <th>状态</th>
+                        </tr>
+                        <volist name="list" id="vo">
+                        <tr>
+                            <td><a href="{:U('Member/orderdetail',array('id'=>$vo['id']))}">{$vo.orderid}</a></td>
+                            <td>{$vo.create_time|toDate="Y-m-d H:i:s"}</td>
+                            <td>{$vo.totalprice}</td>
+                            <td>{$vo.status|getOrderStatus}</td>
+                        </tr>
+                        </volist>
+                    </tbody>
+                </table>
+                <div class="orderpage" >{$page}</div>
+            </div>
+
+    </div>
+<include file="Public:footer" />

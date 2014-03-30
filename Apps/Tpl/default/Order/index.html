@@ -1,0 +1,148 @@
+<include file="Public:header" />
+    
+    <div id="main">
+    	<div class="main_left">
+            <include file="Public:left" />
+        </div>
+        <div class="main_right">
+            <div class="content">
+            	<div class="content_top">确认订单信息</div>
+                <div class="content_news">
+                    <form method='post' id="form1" name="form1" action="{:U('Order/show')}">
+                        <div class="tabletop">确认收货地址</div>
+                        <table cellpadding=3 cellspacing=3 >
+                            <tr>
+                                <td class="tRight" width="10%">联系人：</td>
+                                <td class="tLeft" ><input type="text" name="name" id="name" ><span class="red">*</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tRight" width="12%">联系人电话：</td>
+                                <td class="tLeft" ><input type="text" name="tel" id="tel"><span class="red">*</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tRight" width="10%">收货地址：</td>
+                                <td class="tLeft" ><input type="text" name="address" id="address"><span class="red">*</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tRight" width="22%">电子邮箱：</td>
+                                <td class="tLeft" ><input type="text" name="email" id="email"><span class="red">*</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tRight tTop" >备注：</td>
+                                <td><textarea id="remark" name="remark" rows="3" cols="50"></textarea></td>
+                            </tr>
+                        </table>
+                        <div class="tabletop">确认订单信息</div>
+                        <table id='order' width="100%" border="0" cellspacing="0" cellpadding="0" style='text-align: center;'>
+                            <tr>
+                                <th class='tLeft'>商品信息</th>
+                                <th>单价</th>
+                                <th>数量</th>
+                                <th>小计</th>
+                                <th></th>
+                            </tr>
+                            <volist name="list" id="vo">
+                                <notempty name="vo.sub_list">
+                                    <tr style="background: #FFF;">
+                                        <td class='tLeft'>
+                                            <input type="hidden" name="type" value="cart">
+                                            <input type="hidden" name="id[]" value="{$vo.sub_list.id}">
+                                            <input type="hidden" name="cartid[]" value="{$vo.id}">
+                                            <img src="__ROOT__/Uploads{$vo.sub_list.thumb}" width="60" height="60" class='fLeft' />
+                                            <div class="prolisttitle">
+                                            <a href="{:U('Product/show',array('id'=>$vo['sub_list']['id']))}" target="_blank">{$vo.sub_list.title}</a>
+                                            </div>
+                                        </td> 
+                                        <td>     
+                                            ￥<span name="price">{$vo.sub_list.price}</span><input type="hidden" name="price[]" value="{$vo.sub_list.price}">
+                                        </td> 
+                                        <td>
+                                            <present name="vo.num">
+                                                <input type="text" style='width: 50px;' name="num[]" value="{$vo.num}">
+                                                <else/>
+                                                <input type="text" style='width: 50px;' name="num[]" value="1">
+                                            </present>
+                                        </td> 
+                                        <td>     
+                                            ￥<span name="allprice">{$vo.sub_list.allprice}</span><input type="hidden" name="allprice[]" value="{$vo.sub_list.allprice}">
+                                        </td>
+                                    </tr>
+                                    <else />
+                                    <tr style="background: #FFF;">
+                                        <td class="tLeft">
+                                            
+                                            <input type="hidden" name="id[]" value="{$vo.id}">
+                                            <img src="__ROOT__/Uploads{$vo.thumb}" width="60" height="60" class="fLeft" />
+                                            <div class="prolisttitle">
+                                                <a href="{:U('Product/show',array('id'=>$vo['id']))}" target="_blank">{$vo.title}</a>
+                                            </div>
+                                        </td> 
+                                        <td>     
+                                            ￥<span name="price">{$vo.price}</span><input type="hidden" name="price[]" value="{$vo.price}">
+                                        </td> 
+                                        <td>
+                                            <present name="vo.num">
+                                                <input type="text" style='width: 50px;' name="num[]" value="{$vo.num}">
+                                                <else/>
+                                                <input type="text" style='width: 50px;' name="num[]" value="1">
+                                            </present>
+                                        </td> 
+                                        <td>
+                                            ￥<span name="allprice">{$vo.allprice}</span><input type="hidden" name="allprice[]" value="{$vo.allprice}">
+                                        </td>
+                                    </tr>
+                                </notempty>
+                            </volist>
+                        </table>
+                        <div class='clear'></div>
+                        <div class="th" style="margin-top: 5px; float: right; font-size: 14px;">合计：￥<span id="totalprice">{$totalPrice}</span><input type="hidden" name="totalprice" value="{$totalPrice}"></div>
+                        <div class='clear'></div>
+                        <div class="th" style="margin-top: 5px; float: right;"><input type="submit" value="提交订单"  class="btn7"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+    $(function(){
+        var i=0;
+        $("#order tr").each(function(){
+            if(i>0){
+                var price=$(this).children('td').next().children('span').html();
+                var num=$(this).children('td').next().next().children('input').val();
+                var count=accMul(num,price).toFixed(2);//计算单个物品价格
+                $(this).children('td').next().next().next().children('span').html(count);
+                $(this).children('td').next().next().next().children('input').val(count);
+            }
+            i++;
+        });
+        GetInAll();//计算所有物品价格
+        
+        $("#order input[type=text]").blur(function(oEven){
+            var price=$(this).parent().prev().children('span').html();
+            var num=$(this).val();
+            var count=accMul(num,price).toFixed(2);//计算单个物品价格
+            $(this).parent().next().children('span').html(count);
+            $(this).parent().next().children('input').val(count);
+           
+            GetInAll();//计算所有物品价格
+        });
+    })
+    
+    function GetInAll(){
+        var i=0;
+        var totalprice=0;
+        var allprice=0;
+        $("#order tr").each(function(){
+            if(i>0){
+                allprice=$(this).children('td').next().next().next().children('span').html();
+                totalprice=accAdd(totalprice, allprice).toFixed(2);
+            }
+            i++;
+        });
+        $("#totalprice").html(totalprice);
+        $("input[name=totalprice]").val(totalprice);
+    } 
+
+</script>
+<include file="Public:footer" />
