@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>YuFuCMS管理系统登录</title>
+        <title>JuneCMS管理系统登录</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel='stylesheet' type="text/css" href="../Public/css/style.css" />
         <script type="text/javascript" src="../Public/js/jquery-1.7.1.min.js"></script>
@@ -59,23 +59,30 @@
     //-->
     </script>
     </head>
-    <body>
-        
-        <div class="login">
-            
-            <div class="version">企业网站版</div>
-            <form method='post' name="login" id="form1" action="{:U('Public/checkLogin')}" >
-                <div class="loginbox">
-                    <label>用户名：</label><input type="text" class="ipt3" id="account" name="account">
-                    <label>密 码：</label><input type="password" class="ipt3" id="password" name="password">
-                    <label>验证码：</label><input type="text" class="ipt2" id="verify" name="verify"><img id="verifyImg" src="{:U('Public/verify')}"  border="0" alt="点击刷新验证码" style="cursor:pointer; margin-left: 5px;" align="absmiddle">
-                    <input type="hidden" name="ajax" value="1">
-                    <input type="submit" id="submit" value="登 录" class="btn4">
-                </div>
-            </form>
-            <div id="result" class="red"></div>
-            <div class="shuom">在操作过程中如果有问题，可以联系鱼福网寻求帮助！<a href="http://www.yufu5.com" target="_blank">www.yufu5.com</a></div>
-        </div>
 
+    <body>
+    <div id="body">
+        <form method='post' name="login" id="form1" action="{:U('Public/checkLogin')}" >
+        <table border="0">
+            <tr>
+                <td height="60" valign="top" align="right"><label>用户名：</label></td>
+                <td valign="top" align="left"><input type="text" id="account" name="account" ></td>
+            </tr>
+            <tr>
+                <td height="40" valign="top" align="right"><label>密 码：</label></td>
+                <td valign="top" align="left"><input type="password" id="password" name="password" ></td>
+            </tr>
+            <tr>
+                <td height="40" valign="top" align="right"><label>验证码：</label></td>
+                <td valign="top" align="left"><input type="text" class="ipt2" id="verify" name="verify"><img id="verifyImg" src="{:U('Public/verify')}"  border="0" alt="点击刷新验证码" style="cursor:pointer; margin-left: 5px;" align="absmiddle"></td>
+            </tr>
+            <tr>
+                <td colspan="2" height="50" valign="top"><input type="submit" value="登 录" id="loginbtn"><?php echo lang('btn_login')?></a><input type="hidden" name="ajax" value="1"/></td>
+            </tr>
+            <tr><td colspan="2" height="20" class="footer"><?php echo lang('system_copy')?>  Powered by <a href="<?php echo lang('system_link')?>" target="_blank"><?php echo lang('system_name')?></a></td>
+            </tr>
+        </table>
+        </form>
+    </div>
     </body>
 </html>

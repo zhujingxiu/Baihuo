@@ -3,7 +3,7 @@ if(!defined('THINK_PATH')) exit();
 return $array = array (
   'DB_TYPE' => 'mysql',
   'DB_HOST' => 'localhost',
-  'DB_NAME' => 'baihu',
+  'DB_NAME' => 'baihuo',
   'DB_USER' => 'root',
   'DB_PWD' => '',
   'DB_PORT' => '3306',
