@@ -157,16 +157,24 @@ class PublicAction extends Action {
 
     // 登录检测
     public function checkLogin() {
-        
+        $data['status'] = 0;
         if(empty($_POST['account'])) {
-            $this->error('用户名不能为空！');
+            $data['msg'] = '用户名不能为空！' ;
+            echo json_encode($data);
+            exit;
         }elseif (empty($_POST['password'])){
-            $this->error('密码不能为空！');
+            $data['msg'] = '密码不能为空！';
+            echo json_encode($data);
+            exit;
         }elseif (empty($_POST['verify'])){
-            $this->error('验证码不能为空！');
+            $data['msg'] = '验证码不能为空！';
+            echo json_encode($data);
+            exit;
         }
         if(!extension_loaded('curl')){    
-            $this->error('抱歉，您的服务器，还不支持curl扩展，请配置后登录，如有问题，请咨询www.yufu5.com！');
+            $data['msg'] = '抱歉，您的服务器，还不支持curl扩展，请配置后登录';
+            echo json_encode($data);
+            exit;
         }
         //生成认证条件
         $map=array();
@@ -174,36 +182,52 @@ class PublicAction extends Action {
         $map['account']	= $_POST['account'];
         $map["status"]=array('gt',0);
         if($_SESSION['verify'] != md5($_POST['verify'])) {
-            $this->error('验证码错误！');
+            $data['msg'] = '验证码错误！';
+            echo json_encode($data);
+            exit;
         }
         import ( '@.ORG.Util.RBAC' );
         $authInfo = RBAC::authenticate($map);
         
         //使用用户名、密码和状态的方式进行认证
         if(false == $authInfo) {
-            $this->error('用户名或密码错误！');
+            $data['msg'] = '用户名或密码错误！';
+            echo json_encode($data);
+            exit;
         }else {
-            $error=D('Set')->find();
-            $errorcount=$error['errorcount'];
-            $errorinterval=$error['errorinterval'];
+            $setting=D('Set')->find();
+            $errorcount=$setting['errorcount'];
+            $errorinterval=$setting['errorinterval'];
 
             $ip=get_client_ip();
             $time=time();
             $error_count=$authInfo['error_count'];
-            //ip相同
-            if($authInfo['last_login_ip']==$ip && ($authInfo['error_count']>$errorcount-1)){
-               
-                if(($time-$authInfo['error_login_time'])<$errorinterval){
-                    $this->error('用户名或密码错误超过'.$errorcount.'次，请'.($errorinterval/60).'分钟后再试！');
-                }  else {
-                    D('User')->where($map)->setField('error_count',0);
-                    $error_count=0;
+            if($error_count>0){
+                //ip相同
+                if($authInfo['last_login_ip']==$ip && ($authInfo['error_count']>$errorcount-1)){
+                   
+                    if(($time-$authInfo['error_login_time'])<$errorinterval){
+
+                        $data['msg'] = '用户名或密码错误超过'.$errorcount.'次，请'.($errorinterval/60).'分钟后再试！';
+                        echo json_encode($data);
+                        exit;
+                    }  else {
+                        D('User')->where($map)->setField('error_count',0);
+                        $error_count=0;
+                    }
                 }
             }
+            
             if($authInfo['password'] != md5($_POST['password'])) {
-                D('User')->where($map)->setInc('error_count',1);//密码错误次数
-                D('User')->where($map)->setField('error_login_time',$time);
-                $this->error('用户名或密码错误，您还有'.($errorcount-$error_count).'次尝试机会！');
+                $times_str = '';
+                if($error_count>0){
+                    D('User')->where($map)->setInc('error_count',1);//密码错误次数
+                    D('User')->where($map)->setField('error_login_time',$time);
+                    $times_str = '，您还有'.($errorcount-$error_count).'次尝试机会！';
+                }
+                $data['msg'] = '用户名或密码错误'.$times_str;
+                echo json_encode($data);
+                exit;
             }
             
             $_SESSION[C('USER_AUTH_KEY')]=$authInfo['id'];
@@ -226,9 +250,10 @@ class PublicAction extends Action {
 
             // 缓存访问权限
             RBAC::saveAccessList();
-            
-            $this->success('登录成功！');
-            
+            $data['status'] = 1;
+            $data['msg'] = '登录成功！';
+            echo json_encode($data);
+            exit;
         }
     }
     // 检查用户是否登录
@@ -288,7 +313,7 @@ class PublicAction extends Action {
     public function verify() {
         $type=isset($_GET['type'])?$_GET['type']:'gif';
         import("@.ORG.Util.Image");
-        Image::buildImageVerify(4,1,$type);
+        Image::buildImageVerify(4,1,$type,80);
     }
 }
 ?>

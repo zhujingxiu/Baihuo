@@ -5,84 +5,77 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel='stylesheet' type="text/css" href="../Public/css/style.css" />
         <script type="text/javascript" src="../Public/js/jquery-1.7.1.min.js"></script>
-        <script type="text/javascript" src="../Public/js/jquery.form.js"></script>
-        <style type="text/css">
-            body{background: #E9E9E9;}
-        </style>
-    <script type="text/javascript">     
-    <!--
+    <script type="text/javascript"><!--
+    function login(){
+        if($.trim($("#verify").val())=='' || $.trim($("#user_name").val())=='' || $.trim($("#user_pass").val())==''){
+            $("#msgtip").html('信息不完整！');
+            return false;
+        }
+        $.ajax({
+            type: "POST",
+            url: "{:U('Public/checkLogin')}",
+            data: "ajax=1&verify="+$.trim($("#verify").val())+"&account="+$.trim($("#user_name").val())+"&password="+$.trim($("#user_pass").val()),
+            dataType:"json",
+            success: function(data){
+                if (data.status==1){
+                    window.location.href = "{:U('Index/index')}";
+                }else{
+                    $("#msgtip").html(data.msg);
+                    $('#verifyImg').attr('src',"{:U('Public/verify',array('t'=>'"+new Date().getTime()+"'))}");
+                }
+            },
+            beforeSend:function(){
+                $("#msgtip").html("登录中，请稍后！");
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+                $("#msgtip").html(errorThrown);
+                $("#msgtip").hide(200);
+                $("#msgtip").show(200);
+            }
+        });
+    }
+    
     $(function(){
-
-        $('#form1').ajaxForm({
-            beforeSubmit:  checkForm,  
-            success:       complete,  
-            dataType: 'json'
-        });
-        
-        function complete(data){
-            if (data.status===1){
-                window.location.href = "{:U('Index/index')}";
-            }else{
-                alert(data.info);
-                var timenow = new Date().getTime();
-                var url="{:U('Public/verify',array('t'=>'"+timenow+"'))}";
-                $('#verifyImg').attr('src',url);
-            }
-        }
-        function checkForm(){
-            if( '' === $.trim($('#account').val())){
-                //$('#result').html('用户名不能为空!').show();
-                alert('用户名不能为空!');
-                return false;
-            }
-            if( '' === $.trim($('#password').val())){
-                //$('#result').html('密码不能为空!').show();
-                alert('密码不能为空!');
-                return false;
-            }
-            if( '' === $.trim($('#verify').val())){
-                //$('#result').html('验证码不能为空!').show();
-                alert('验证码不能为空!');
-                return false;
-            } 
-        }
+        $(document).keypress(function(e) {if (e.which == 13)  login(); });
         $('#verifyImg').click(function(){
-            //重载验证码
-            var timenow = new Date().getTime();
-            var url="{:U('Public/verify',array('t'=>'"+timenow+"'))}";
-            $('#verifyImg').attr('src',url);
-            
+            $('#verifyImg').attr('src',"{:U('Public/verify',array('t'=>'"+new Date().getTime()+"'))}");            
         });
-        
-    });
- 
-    //-->
-    </script>
+    })
+    //--></script>
+    <style type="text/css">
+        *{padding:0;margin:0;}
+        div{margin:0;padding:0;}
+        body{background:#efeff1;color:#135891;font-size:14px;font-weight:800;}
+        #body{width:449px;height:268px;overflow:hidden;background:url('../Public/images/loginbody.gif') no-repeat;margin:150px auto;}
+        table{margin-top:80px;margin-left:100px;line-height:24px;}
+        #user_name,#user_pass{width:212px;height:24px;line-height:24px;}
+        #msgtip{width:200px;height:30px;line-height:30px;color:red;}
+        #loginbtn{width:62px;height:28px;margin-right:15px;text-align:center;line-height:28px;color:#fff;text-decoration:none;background:url('../Public/images/loginbg.gif') no-repeat;border: none;}
+        .footer{color:#9F9F9F;text-align: right;font-size: 11px;line-height: 20px;}
+        .footer a{color:#7EB4FE;}
+    </style>
     </head>
 
     <body>
     <div id="body">
-        <form method='post' name="login" id="form1" action="{:U('Public/checkLogin')}" >
         <table border="0">
             <tr>
-                <td height="60" valign="top" align="right"><label>用户名：</label></td>
-                <td valign="top" align="left"><input type="text" id="account" name="account" ></td>
+                <td height="40" valign="top" align="right"><label>用户名：</label></td>
+                <td valign="top" align="left"><input type="text" id="user_name" name="account" ></td>
             </tr>
             <tr>
                 <td height="40" valign="top" align="right"><label>密 码：</label></td>
-                <td valign="top" align="left"><input type="password" id="password" name="password" ></td>
+                <td valign="top" align="left"><input type="password" id="user_pass" name="password" ></td>
             </tr>
             <tr>
                 <td height="40" valign="top" align="right"><label>验证码：</label></td>
-                <td valign="top" align="left"><input type="text" class="ipt2" id="verify" name="verify"><img id="verifyImg" src="{:U('Public/verify')}"  border="0" alt="点击刷新验证码" style="cursor:pointer; margin-left: 5px;" align="absmiddle"></td>
+                <td valign="top" align="left"><input type="text" id="verify" name="verify" style="height:24px;line-height:24px;"><img id="verifyImg" src="{:U('Public/verify')}"  border="0" alt="点击刷新验证码" style="cursor:pointer; margin-left: 5px;height:24px;line-height:24px;" align="absmiddle"></td>
             </tr>
             <tr>
-                <td colspan="2" height="50" valign="top"><input type="submit" value="登 录" id="loginbtn"><?php echo lang('btn_login')?></a><input type="hidden" name="ajax" value="1"/></td>
+                <td colspan="2" height="50" valign="top"><input type="button" onclick="return login();" value="登 录" id="loginbtn"><div id="msgtip"></div></td>
             </tr>
-            <tr><td colspan="2" height="20" class="footer"><?php echo lang('system_copy')?>  Powered by <a href="<?php echo lang('system_link')?>" target="_blank"><?php echo lang('system_name')?></a></td>
-            </tr>
+
         </table>
-        </form>
     </div>
     </body>
 </html>

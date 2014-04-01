@@ -1,7 +1,7 @@
 <?php
 
 //调试模式
-//define('APP_DEBUG',TRUE);
+define('APP_DEBUG',TRUE);
 define('THINK_PATH', "../System/");
 define('APP_NAME', "Protected");
 define('APP_PATH', "../Protected/");
