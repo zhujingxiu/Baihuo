@@ -1,5 +1,6 @@
 <?php
     return array(
+    	
         'SESSION_AUTO_START'    => true,
         'USER_AUTH_ON'          => true,
         'USER_AUTH_TYPE'        => 1,	// 默认认证类型 1 登录认证 2 实时认证
@@ -14,6 +15,7 @@
         'DB_LIKE_FIELDS'        => 'title|remark',
         'SHOW_PAGE_TRACE'       => 0,            //显示调试信息
         'APP_AUTOLOAD_PATH'     => '@.TagLib',
+    	'FRONTEND_TAGLIB_PRE'	=> 'view_block',
         'TMPL_ACTION_ERROR'     => 'Public:error',      //默认错误跳转对应的模板文件  
         'TMPL_ACTION_SUCCESS'   => 'Public:success',  //默认成功跳转对应的模板文件
         'VAR_PAGE'              => 'p',

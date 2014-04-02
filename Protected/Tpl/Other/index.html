@@ -24,7 +24,7 @@
                 <td>{$vo.id}</td>
                 <td>{$vo.setname|htmlspecialchars}</td>
                 <td>{$vo.settag|htmlspecialchars}</td>
-                <td title="复制模板代码，放在前台模板需要显示的地方">&lt;yufu:other settag=&quot;{$vo.settag|htmlspecialchars}&quot; /&gt;</td>
+                <td title="复制模板代码，放在前台模板需要显示的地方">&lt;{$Think.CONFIG.FRONTEND_TAGLIB_PRE}:other settag=&quot;{$vo.settag|htmlspecialchars}&quot; /&gt;</td>
                 <td><a href="{:U('Other/edit',array('id'=>$vo['id']))}">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{:U('Other/foreverdel',array('id'=>$vo['id']))}" onclick="foreverdel({$vo['id']}); return false;">删除</a></td>
             </tr>
             </volist>
