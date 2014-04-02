@@ -373,10 +373,30 @@ class  ThinkTemplate {
      * @param boolen $hide 是否隐藏标签库前缀
      * @return string
      */
+    private function formatName($name_str,$model='ucwords'){
+    	if(!empty($name_str)){
+    		if(strpos($name_str, "_") !==false){
+    			$items = explode("_", $name_str);
+    			$tmp=array();
+    			foreach ($items as $item){
+    				if(trim($item)){
+    					if($model=='ucwords'){
+    						$tmp[] = ucwords(strtolower(trim($item)));
+    					}
+    				}
+    			}
+    			
+    			return implode("", $tmp);
+    		}else{
+    			return $model=='ucwords' ? ucwords(strtolower($name_str)) : $name_str ;
+    		}
+    	}
+    	 
+    }
     public function parseTagLib($tagLib,&$content,$hide=false) {
         $begin      =   $this->config['taglib_begin'];
         $end        =   $this->config['taglib_end'];
-        $className  =   'TagLib'.ucwords($tagLib);
+        $className  =   'TagLib'.$this->formatName($tagLib);
         $tLib       =   Think::instance($className);
         foreach ($tLib->getTags() as $name=>$val){
             $tags = array($name);
@@ -424,7 +444,7 @@ class  ThinkTemplate {
         //}
         if(ini_get('magic_quotes_sybase'))
             $attr   =  str_replace('\"','\'',$attr);
-        $tLib       =  Think::instance('TagLib'.ucwords(strtolower($tagLib)));
+        $tLib       =  Think::instance('TagLib'.$this->formatName($tagLib));
         $parse      = '_'.$tag;
         $content    = trim($content);
         return $tLib->$parse($attr,$content);
