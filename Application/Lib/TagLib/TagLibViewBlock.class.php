@@ -1,6 +1,6 @@
 <?php
 //import('TagLib');
-class TagLibYufu extends TagLib {
+class TagLibViewBlock extends TagLib {
    //标签定义
    protected $tags=array(
        'category'=>array('attr'=>'catid,result','level'=>1),

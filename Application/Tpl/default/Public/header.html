@@ -11,7 +11,7 @@
 </head>
 <body class="bodybg">
     <div class="head section clearfix">
-    	<a href="__APP__"><img src="__ROOT__/Uploads<yufu:set settag="logo" />" /></a>
+    	<a href="__APP__"><img src="__ROOT__/Uploads<view_block:set settag="logo" />" /></a>
         <div class="headr">
             <span class="phone">025-57324358</span>
             <a href="#">设为首页</a><a href="#">加入收藏</a><a href="#">联系我们</a>
@@ -42,16 +42,16 @@
         <!-- 焦点图 -->
         <div id="DestpicFlow">
             <ul class="Slides">
-                <yufu:slide field="id,title,url,img" order="listorder desc" num="5">
+                <view_block:slide field="id,title,url,img" order="listorder desc" num="5">
                 <li style="display: none; position: absolute; top: 0pt; left: 0pt; z-index: 1; opacity: 1;">
                     <a href="{$slide.url}" target="_blank"><img src="__UPLOADS__{$slide.img}" alt="{$slide.title}"  width="1000"/></a>
                 </li>
-                </yufu:slide>
+                </view_block:slide>
             </ul>
             <ul class="SlideTriggers">
-                <yufu:slide field="id" order="listorder desc" num="5">
+                <view_block:slide field="id" order="listorder desc" num="5">
                 <li <eq name="key" value="0">class="Current"</eq>>{$key+1}</li>
-                </yufu:slide>
+                </view_block:slide>
             </ul>
         </div>
         <script type="text/javascript">TB.widget.SimpleSlide.decorate('DestpicFlow', {eventType:'mouse', effect:'fade'});</script>
