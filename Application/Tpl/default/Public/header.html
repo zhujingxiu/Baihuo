@@ -7,6 +7,42 @@
 <meta name="description" content="{$description}" />
 <link href="../Public/css/basic.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript">
+//设置为主页 
+function setHome(obj,url){ 
+	if(confirm('把本站设为首页？')){	
+		try{ 
+			obj.style.behavior='url(#default#homepage)';obj.setHomePage(url); 
+		}catch(e){ 
+			if(window.netscape) { 
+				try { 
+					netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect"); 
+				}catch (e) { 
+					alert("此操作被浏览器拒绝！\n请在浏览器地址栏输入“about:config”并回车\n然后将 [signed.applets.codebase_principal_support]的值设置为'true',双击即可。"); 
+				} 
+				var prefs = Components.classes['@mozilla.org/preferences-service;1'].getService(Components.interfaces.nsIPrefBranch); 
+				prefs.setCharPref('browser.startup.homepage',url); 
+			}else{ 
+				alert("您的浏览器不支持，请按照下面步骤操作：1.打开浏览器设置。2.点击设置网页。3.输入："+url+"点击确定。"); 
+			} 
+		} 
+	}
+} 
+//加入收藏 兼容360和IE6 
+function setCollect(sTitle,sURL){ 
+	if(confirm('把本站添加到收藏？')){	
+		try{ 
+			window.external.addFavorite(sURL, sTitle); 
+		}catch (e){ 
+			try { 
+				window.sidebar.addPanel(sTitle, sURL, ""); 
+			}catch (e){ 
+				alert("加入收藏失败，请使用Ctrl+D进行添加"); 
+			} 
+		} 
+	}
+} 
+</script>
 <load href="../Public/js/slider.js" />
 </head>
 <body class="bodybg">
@@ -14,7 +50,10 @@
     	<a href="__APP__"><img src="__ROOT__/Uploads<view_block:set settag="logo" />" /></a>
         <div class="headr">
             <span class="phone">025-57324358</span>
-            <a href="#">设为首页</a><a href="#">加入收藏</a><a href="#">联系我们</a>
+            
+            <view_block:other settag="homepage" />
+            <view_block:other settag="collect" />
+            <a href="#">联系我们</a>
         </div>
 
     </div>

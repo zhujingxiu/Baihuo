@@ -16,7 +16,7 @@
                 <div class="index-news">
                     <h4>集团新闻</h4>
                     <ul>
-                        <view_block:article catid="1" field="id,title,create_time" order="create_time desc" num="5" >
+                        <view_block:article catid="86" field="id,title,create_time" order="create_time desc" num="5" >
                         <li><em class="time">{$article.create_time|date="Y-m-d",###}</em><a href="{:U('Article/show',array('id'=>$article['id']))}">{$article.title|msubstr=0,25}</a></li>
                         </view_block:article>
                     </ul>
@@ -37,14 +37,18 @@
     <div class="section">
         <div class="box2 clearfix mart10">
         	<div class="cx">
-                <h3><a href="{:U('Article/index',array('id'=>'44'))}" class="more" target="_blank">more</a>百货促销信息</h3>
+                <h3><a href="{:U('Article/index',array('id'=>'88'))}" class="more" target="_blank">more</a>百货促销信息</h3>
                 <div class="cx-box clearfix">
                     <p class="pic">
-                        <a href="#"><img src="images/pic1.jpg" width="125" height="80" /><b>提升城市功能品质 加快美</b></a>
+                    	<view_block:article catid="88" field="id,title,thumb" order="create_time desc" num="1" >
+                        <a href="{:U('Article/show',array('id'=>$article['id']))}"><img src="__UPLOADS__{$article.thumb}" width="125" height="80" /><b>{$article.title|msubstr=0,22}</b></a>
+                        </view_block:article>
                     </p>
                      <ul>
-                        <view_block:article catid="44" field="id,title,create_time" order="create_time desc" num="5" >
+                        <view_block:article catid="88" field="id,title,create_time" order="create_time desc" num="6" >
+                        	<if condition="$key neq 0 ">
                             <li><em class="time">{$article.create_time|toDate="Y-m-d"}</em><a href="{:U('Article/show',array('id'=>$article['id']))}" target="_blank">{$article.title|msubstr=0,22}</a></li>
+                            </if>
                         </view_block:article>
                     </ul>
                 </div>
