@@ -28,18 +28,6 @@ class PublicAction extends Action {
         //浏览排行榜
 //        $tjurl=D('Tjurl');
 //        $list=$tjurl->order('create_num desc')->limit(10)->select();
-
-        if(!session('?yufu5url')){
-            //判断使用官方地址
-            import('@.ORG.Net.Http');
-            $result=Http::GetHttpStatusCode('http://www.yufu5.com');
-
-            if($result==200){
-                session('yufu5url','http://www.yufu5.com');
-            }else{
-                session('yufu5url','http://www.yufu5.net');
-            }
-        }
         
         $this->tjnum=$tjnum==null ? 0:$tjnum;
         $this->tjnum1=$tjnum1==null ? 0:$tjnum1;

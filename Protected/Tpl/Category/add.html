@@ -1,7 +1,7 @@
 <include file="Public:header" />
 <div class="main">
             <div class="box_tit">
-                <h2>添加栏目</h2>
+                <h2>添加分类</h2>
             </div>
             <div class="form_list">
                 <form method='post' id="form1" name="form1" action="{:U('Category/insert')}"  enctype="multipart/form-data">
@@ -21,10 +21,10 @@
                     </dd>
                 </dl>
                 <dl>
-                    <dt> 上级栏目：</dt>
+                    <dt> 上级分类：</dt>
                     <dd>
                         <select name="pid">
-                            <option value="0">≡ 作为一级栏目 ≡</option>
+                            <option value="0">≡ 作为一级分类 ≡</option>
                             <volist name="list" id="vo">
                                 <if condition="$vo.id eq $current_pid">
                                     <option value="{$vo['id']}" selected="selected">
@@ -45,12 +45,24 @@
                     </dd>
                 </dl>
                 <dl>
-                    <dt> 栏目名称：</dt>
+                    <dt> 分类名称：</dt>
                     <dd>
                         <input type="text" class="ipt3" name="catname" />
                     </dd>
                 </dl>
-                
+                <dl>
+                    <dt> 附加参数：</dt>
+                    <dd>
+                        <input type="text" class="ipt1" name="params" value='' />
+                    </dd>
+                </dl>
+                <dl>
+                    <dt> 自定义URL：</dt>
+                    <dd>
+                        <input type="text" class="ipt1" name="custom_url" value='' />
+                    </dd>
+                </dl>
+
                 <dl>
                     <dt> 排序值：</dt>
                     <dd>
@@ -67,24 +79,24 @@
                     </dd>
                 </dl>
                 <dl>
-                    <dt>栏目标题：</dt>
+                    <dt>分类标题：</dt>
                     <dd>
                         <input type="text" class="ipt6" name="title" />
-                        <span class="fontcolor">title（栏目标题）针对搜索引擎设置的标题</span>
+                        <span class="fontcolor">title（分类标题）针对搜索引擎设置的标题</span>
                     </dd>
                 </dl>
                 <dl>
-                    <dt>栏目关键词：</dt>
+                    <dt>分类关键词：</dt>
                     <dd>
                         <input type="text" class="ipt6" name="keywords" />
-                        <span class="fontcolor">meta keywords（栏目关键词）关键字中间用半角逗号隔开</span>
+                        <span class="fontcolor">meta keywords（分类关键词）关键字中间用半角逗号隔开</span>
                     </dd>
                 </dl>
                 <dl>
-                    <dt>栏目描述：</dt>
+                    <dt>分类描述：</dt>
                     <dd>
                         <textarea name="description" style="width:400px; height:60px; float: left;"></textarea>
-                        <span class="fontcolor" style="width: 260px; float: left;">meta description（栏目描述）针对搜索引擎设置的网页描述</span>
+                        <span class="fontcolor" style="width: 260px; float: left;">meta description（分类描述）针对搜索引擎设置的网页描述</span>
                     </dd>
                 </dl>
                 </div>

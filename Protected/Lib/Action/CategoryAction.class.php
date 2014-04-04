@@ -13,7 +13,7 @@ class CategoryAction extends CommonAction{
         }
         
         $cate=new CategoryModel();
-        $menu =$cate->getMyCategory1(); //加载栏目
+        $menu =$cate->getMyCategory1(); //加载分类
         $menu = arrToMenu($menu,0);  
         $this->list=$menu;
         Cookie::set('_currentUrl_', __SELF__);
@@ -27,8 +27,8 @@ class CategoryAction extends CommonAction{
             $current_modelname=$_GET['model'];
         }
         $cate=new CategoryModel();
-//        $this->list=$cate->getMyCategory();//加载栏目
-        $menu =$cate->getMyCategory1(); //加载栏目
+//        $this->list=$cate->getMyCategory();//加载分类
+        $menu =$cate->getMyCategory1(); //加载分类
         $menu = arrToMenu($menu,0);  
         $this->list=$menu;
         $this->mdldata=$cate->getMyModel();//加载模型
@@ -38,8 +38,8 @@ class CategoryAction extends CommonAction{
     }
     public function _before_edit() {
         $cate=new CategoryModel();
-//        $this->list=$cate->getMyCategory();//加载栏目
-        $menu =$cate->getMyCategory1(); //加载栏目
+//        $this->list=$cate->getMyCategory();//加载分类
+        $menu =$cate->getMyCategory1(); //加载分类
         $menu = arrToMenu($menu,0);  
         $this->list=$menu;
         $this->mdldata=$cate->getMyModel();//加载模型
