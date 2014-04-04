@@ -3,21 +3,15 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2014 年 03 月 30 日 11:28
+-- 生成日期: 2014 年 04 月 04 日 02:52
 -- 服务器版本: 5.5.24-log
 -- PHP 版本: 5.4.3
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
 --
--- 数据库: `baihu`
+-- 数据库: `baihuo`
 --
 
 -- --------------------------------------------------------
@@ -51,14 +45,15 @@ CREATE TABLE IF NOT EXISTS `bh_announce` (
   `create_time` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `siteid` (`endtime`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- 转存表中的数据 `bh_announce`
 --
 
 INSERT INTO `bh_announce` (`id`, `title`, `content`, `starttime`, `endtime`, `status`, `create_time`) VALUES
-(10, '鱼福CMS企业网站系统发布啦', '<p>鱼福CMS企业网站系统发布啦</p>', 1374280380, 1374280380, 1, 1374315317);
+(10, '百货大楼正式上线啦', '<p>南京市高淳百货大楼正式上线啦</p>', 1384280380, 1389280380, 1, 1384315316),
+(11, '华闻传媒投资集团股份有限公司公告', '<p style="padding:0px;font-size:14px;line-height:23px;color:#333333;font-family:宋体;background-color:#ffffff;margin-top:15px;margin-bottom:15px;">　　证券代码:000793证券简称:<span id="stock_sz000793"><a href="http://finance.sina.com.cn/realstock/company/sz000793/nc.shtml" class="keyword" target="_blank" style="color:#5d7fa2;text-decoration:none;">华闻传媒</a></span><span id="quote_sz000793">(<span style="color:black;">13.26</span>, <span style="color:black;">0.00</span>, <span style="color:black;">0.00%</span>)</span> 公告编号:2014-024</p><p style="padding:0px;font-size:14px;line-height:23px;color:#333333;font-family:宋体;background-color:#ffffff;margin-top:15px;margin-bottom:15px;">　　华闻传媒投资集团股份有限公司第六届</p><p style="padding:0px;font-size:14px;line-height:23px;color:#333333;font-family:宋体;background-color:#ffffff;margin-top:15px;margin-bottom:15px;">　　董事会2014年第二次临时会议决议公告</p><p style="padding:0px;font-size:14px;line-height:23px;color:#333333;font-family:宋体;background-color:#ffffff;margin-top:15px;margin-bottom:15px;">　　本公司及董事会全体成员保证信息披露内容的真实、准确、完整，没有虚假记载、误导性陈述或重大遗漏。</p><p style="padding:0px;font-size:14px;line-height:23px;color:#333333;font-family:宋体;background-color:#ffffff;margin-top:15px;margin-bottom:15px;">　　华闻传媒投资集团股份有限公司第六届董事会2014年第二次临时会议于2014年3月26日以电子邮件的方式发出通知，2014年4月2日以通讯表决方式召开。会议应到董事9人，实到董事9人；会议由董事长温子健先生主持，公司监事和高级管理人员列席了会议；会议符合《公司法》等有关法律、行政法规、部门规章和《公司章程》的规定。</p><p style="padding:0px;font-size:14px;line-height:23px;color:#333333;font-family:宋体;background-color:#ffffff;margin-top:15px;margin-bottom:15px;">　　会议审议通过并以记名投票表决方式形成以下决议：</p><p style="padding:0px;font-size:14px;line-height:23px;color:#333333;font-family:宋体;background-color:#ffffff;margin-top:15px;margin-bottom:15px;">　　审议并通过《关于召开2013年度股东大会的议案》。</p><p style="padding:0px;font-size:14px;line-height:23px;color:#333333;font-family:宋体;background-color:#ffffff;margin-top:15px;margin-bottom:15px;">　　表决结果：同意9票、反对0票、弃权0票。</p><p style="padding:0px;font-size:14px;line-height:23px;color:#333333;font-family:宋体;background-color:#ffffff;margin-top:15px;margin-bottom:15px;">　　公司董事会决定于2014年4月25日召开2013年度股东大会，具体内容详见同日在公司指定信息披露媒体上披露的《关于召开2013年度股东大会的通知》（公告编号：2014－025）。</p><p style="padding:0px;font-size:14px;line-height:23px;color:#333333;font-family:宋体;background-color:#ffffff;margin-top:15px;margin-bottom:15px;">　　特此公告。</p><p style="padding:0px;font-size:14px;line-height:23px;color:#333333;font-family:宋体;background-color:#ffffff;margin-top:15px;margin-bottom:15px;">　　华闻传媒投资集团股份有限公司</p><p style="padding:0px;font-size:14px;line-height:23px;color:#333333;font-family:宋体;background-color:#ffffff;margin-top:15px;margin-bottom:15px;">　　董事会</p><p style="padding:0px;font-size:14px;line-height:23px;color:#333333;font-family:宋体;background-color:#ffffff;margin-top:15px;margin-bottom:15px;">　　二〇一四年四月三日</p><p><br /></p>', 1396516620, 1433063820, 1, 1396516811);
 
 -- --------------------------------------------------------
 
@@ -81,17 +76,29 @@ CREATE TABLE IF NOT EXISTS `bh_article` (
   `status` tinyint(1) DEFAULT NULL,
   `hits` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
 
 --
 -- 转存表中的数据 `bh_article`
 --
 
 INSERT INTO `bh_article` (`id`, `catid`, `title`, `thumb`, `keywords`, `description`, `url`, `content`, `listorder`, `create_time`, `update_time`, `status`, `hits`) VALUES
-(21, 1, '热烈祝贺“绵阳耳鼻喉医院”成功实施《千业医院管理系统》', NULL, '', NULL, NULL, '<p style="text-indent:2em;">经过绵阳合作伙伴与总公司王经理的充分配合与协调下，经过2周时间对“绵阳耳鼻喉医院”成功实施了《千业医院管理系统》，顺利进行了安装、调试、二次开发及培训工作。</p><p><br /></p><p style="text-indent:2em;">绵阳耳鼻喉医院是一家重点专科医院，此次千业HIS系统的成功实施，标志着《千业医院管理系统》由原来致力于综合性医院信息化解决方案提供者向具备极具专业性医院系统使用的融合。</p><p><br /></p>', 0, 1374315574, NULL, 1, 9),
-(22, 45, '移动端进销存软件 发展缓慢的三大原因', NULL, '', NULL, NULL, '<p>过去几年，移动计算发生了翻天覆地的变化，旧的智能手机和笨重的笔记本电脑被簇新的IOS和Android移动设备替代。我们已经有了4G、四核手机处理器、跟笔记本电脑一样大的内存，以及分辨率极高的移动屏幕，似乎，以前只能在PC机上操作的进销存软件完全可以搬到这些新生事物上来，目前，我们看到的现状并非如此，这背后有哪些原因呢？</p><p><br /></p><p> </p><p><br /></p><p>用户群不匹配。</p><p><br /></p><p> &nbsp; &nbsp;IOS和Android的用户群通常比较年轻化和城市化，虽然进销存软件的使用者通常也是在40岁以下，但你必须清楚什么人真正需要进销存软件。他们一般都是生意非常繁忙的老板们，他们关注更多的是软件统计出来的数据结果。你可以想象一下，他们在那一块小屏幕上翻来翻去寻找那些密密麻麻的数字的情景是多么滑稽！这可远远赶不上PC机上的浏览效果。所以说移动硬盘上细小的文本和虚拟键盘对这个人群来说非常的不友好。相对来讲传统PC端上运行效果比较好的傻瓜进销存一类的简洁易用型管理软件更受用户青睐。</p><p><br /></p><p>使用习惯不匹配</p><p><br /></p><p> &nbsp; &nbsp;进销存软件的录入者往往是驻店的店员，用PC机录入数据简单方便，再加上软件本身可以接入外部硬件设备，销售货物时，扫描枪一扫，数据自动填充入PC机上，即刻打印出机制小条给顾客，这些操作一个智能手机很难替代。至于企业管理者使用智能手机无非是身份与地位的象征，至于里面很多很细的操作问题，他既无兴趣也无时间去深入学习。这样的一款高性能的移动设备对于他们的功能仅限于接打电话收发短信而已。</p><p><br /></p><p>硬件条件</p><p><br /></p><p> &nbsp; &nbsp;即使是最新最酷的智能手机，在屏幕尺寸和内存等硬件条件上来说也无法与传统PC相比。今天的智能手机说实话依然不适合展示功能丰富的商业软件界面：太多的菜单、选项和键盘输入。你可以想象一个销售统计图表还要往下翻好几次才能看完，一组统计图被分成好几页，还如何方便的对比？如果你的手指比较肥大，在当今这些触摸屏手机上滑来滑去，也不能准确选定你想找的那一小行字，本身就是一件非常痛苦的事情。WIN8系统的推出也削弱了移动端的优势，傻瓜进销存2.596以上版本支持WIN8系统对移动端进销存软件冲击也非常巨大。</p><p><br /></p><p> &nbsp; &nbsp;以上这些原因都导致了移动端进销存软件发展较为缓慢，类似于傻瓜进销存一类的简洁易用型进销存软件从根本上解决企业管理难题，切实提高企业管理效率，更受中小企业用户的青睐。</p><p><br /></p>', 0, 1374317346, NULL, 1, 4),
-(23, 1, 'asdasddsadas', NULL, 'dsdsa', NULL, NULL, '<p>saddddddddddddddddddddddddddddddddddddddddddd</p>', 0, 1396160836, NULL, 1, 0),
-(24, 44, '住建局：提升城市功能品质 加快美丽', '/2014/03/30/5337ee97dbe3d.jpg', '', NULL, NULL, '<p>住建局：提升城市住建局：提升城市住建局：提升城市功能品质 加快美丽功住建局：提升城市功能品质 加快美丽能品质 加快美丽住建局：提升城市功能品质 加快美丽功能品质 住建局：提升城市功能品质 加快美丽加快美丽<br /></p>', 0, 1396174488, NULL, 1, 0);
+(11, 86, '热烈祝贺“绵阳耳鼻喉医院”成功实施《千业医院管理系统》', NULL, '', NULL, NULL, '<p style="text-indent:2em;">经过绵阳合作伙伴与总公司王经理的充分配合与协调下，经过2周时间对“绵阳耳鼻喉医院”成功实施了《千业医院管理系统》，顺利进行了安装、调试、二次开发及培训工作。</p><p><br /></p><p style="text-indent:2em;">绵阳耳鼻喉医院是一家重点专科医院，此次千业HIS系统的成功实施，标志着《千业医院管理系统》由原来致力于综合性医院信息化解决方案提供者向具备极具专业性医院系统使用的融合。</p><p><br /></p>', 0, 1374315574, NULL, 1, 9),
+(12, 87, '移动端进销存软件 发展缓慢的三大原因', NULL, '', NULL, NULL, '<p>过去几年，移动计算发生了翻天覆地的变化，旧的智能手机和笨重的笔记本电脑被簇新的IOS和Android移动设备替代。我们已经有了4G、四核手机处理器、跟笔记本电脑一样大的内存，以及分辨率极高的移动屏幕，似乎，以前只能在PC机上操作的进销存软件完全可以搬到这些新生事物上来，目前，我们看到的现状并非如此，这背后有哪些原因呢？</p><p><br /></p><p> </p><p><br /></p><p>用户群不匹配。</p><p><br /></p><p> &nbsp; &nbsp;IOS和Android的用户群通常比较年轻化和城市化，虽然进销存软件的使用者通常也是在40岁以下，但你必须清楚什么人真正需要进销存软件。他们一般都是生意非常繁忙的老板们，他们关注更多的是软件统计出来的数据结果。你可以想象一下，他们在那一块小屏幕上翻来翻去寻找那些密密麻麻的数字的情景是多么滑稽！这可远远赶不上PC机上的浏览效果。所以说移动硬盘上细小的文本和虚拟键盘对这个人群来说非常的不友好。相对来讲传统PC端上运行效果比较好的傻瓜进销存一类的简洁易用型管理软件更受用户青睐。</p><p><br /></p><p>使用习惯不匹配</p><p><br /></p><p> &nbsp; &nbsp;进销存软件的录入者往往是驻店的店员，用PC机录入数据简单方便，再加上软件本身可以接入外部硬件设备，销售货物时，扫描枪一扫，数据自动填充入PC机上，即刻打印出机制小条给顾客，这些操作一个智能手机很难替代。至于企业管理者使用智能手机无非是身份与地位的象征，至于里面很多很细的操作问题，他既无兴趣也无时间去深入学习。这样的一款高性能的移动设备对于他们的功能仅限于接打电话收发短信而已。</p><p><br /></p><p>硬件条件</p><p><br /></p><p> &nbsp; &nbsp;即使是最新最酷的智能手机，在屏幕尺寸和内存等硬件条件上来说也无法与传统PC相比。今天的智能手机说实话依然不适合展示功能丰富的商业软件界面：太多的菜单、选项和键盘输入。你可以想象一个销售统计图表还要往下翻好几次才能看完，一组统计图被分成好几页，还如何方便的对比？如果你的手指比较肥大，在当今这些触摸屏手机上滑来滑去，也不能准确选定你想找的那一小行字，本身就是一件非常痛苦的事情。WIN8系统的推出也削弱了移动端的优势，傻瓜进销存2.596以上版本支持WIN8系统对移动端进销存软件冲击也非常巨大。</p><p><br /></p><p> &nbsp; &nbsp;以上这些原因都导致了移动端进销存软件发展较为缓慢，类似于傻瓜进销存一类的简洁易用型进销存软件从根本上解决企业管理难题，切实提高企业管理效率，更受中小企业用户的青睐。</p><p><br /></p>', 0, 1374317346, NULL, 1, 4),
+(13, 86, '玛莎百货拟关闭上海所有门店 或将放弃直营模式', '/2014/04/03/533d17ce88cdc.jpg', 'dsdsa', NULL, NULL, '<p style="padding:0px;text-indent:2em;color:#252525;font-family:宋体, sans-serif;line-height:28px;text-align:justify;background-color:#ffffff;margin-top:26px;margin-bottom:26px;">4月1日，玛莎百货投资日活动在法国举办，发布国际扩张计划。玛莎百货透露将在中国寻找合作伙伴，可能将放弃直营模式。</p><p style="padding:0px;text-indent:2em;color:#252525;font-family:宋体, sans-serif;line-height:28px;text-align:justify;background-color:#ffffff;margin-top:26px;margin-bottom:26px;">目前，玛莎百货在上海开设有15间门店，不过其透露称，由于经营苦难，计划关闭所有门店，同时寻找新址另外开设5间门店。</p><p style="padding:0px;text-indent:2em;color:#252525;font-family:宋体, sans-serif;line-height:28px;text-align:justify;background-color:#ffffff;margin-top:26px;margin-bottom:26px;">玛莎百货首席执行官Marc Bolland 表示希望借助合作伙伴在中国更好的扩张。除了实体店，玛莎百货亦在中国大陆市场运营有在线商店和天猫在线零售店。在投资日的报告中，Marc Bolland 表示未来互联网将在集团的国际扩张中起到重要作用。</p><p style="padding:0px;text-indent:2em;color:#252525;font-family:宋体, sans-serif;line-height:28px;text-align:justify;background-color:#ffffff;margin-top:26px;margin-bottom:26px;">对于国际扩张，玛莎百货给出的五大重要扩张市场为印度、中国、中东、俄罗斯和西欧。</p><p style="padding:0px;text-indent:2em;color:#252525;font-family:宋体, sans-serif;line-height:28px;text-align:justify;background-color:#ffffff;margin-top:26px;margin-bottom:26px;">截止2016年将在印度市场建立80间门店，是目前分销网络的两倍。而在印度市场玛莎百货推出了内衣和美容专卖店。另外在法国市场，玛莎百货也推出了食品专卖店。</p><p><br /></p>', 0, 1396160836, 1396512718, 1, 1),
+(14, 88, '住建局：提升城市功能品质 加快美丽', '/2014/03/30/5337ee97dbe3d.jpg', '', NULL, NULL, '<p>住建局：提升城市住建局：提升城市住建局：提升城市功能品质 加快美丽功住建局：提升城市功能品质 加快美丽能品质 加快美丽住建局：提升城市功能品质 加快美丽功能品质 住建局：提升城市功能品质 加快美丽加快美丽<br /></p>', 0, 1396174488, NULL, 1, 10),
+(25, 88, '就是一个测试的标题', '/2014/04/02/533bd045927f4.jpg', '', NULL, NULL, '<p>就是一个测试的标内容，不要太在意啊<br /></p>', 0, 1396428869, NULL, 1, 12),
+(26, 86, '武汉百货同行不怕奥特莱斯抢生意', '/2014/04/03/533d17fc6f290.jpg', '', NULL, NULL, '<p style="padding:0px;text-indent:2em;color:#252525;font-family:宋体, sans-serif;line-height:28px;text-align:justify;background-color:#ffffff;margin-top:26px;margin-bottom:26px;">武汉百货同行不怕奥特莱斯抢生意商场LV、Gucci照样卖得火</p><p style="padding:0px;text-indent:2em;color:#252525;font-family:宋体, sans-serif;line-height:28px;text-align:justify;background-color:#ffffff;margin-top:26px;margin-bottom:26px;">本报讯（记者符樱） 首家奥特莱斯的悄然关门，并没有挡住奥特莱斯在汉发展的脚步。本报报道昨天见报后，有消费者追问，如今的武汉真的需要那么多奥特莱斯吗？</p><p style="padding:0px;text-indent:2em;color:#252525;font-family:宋体, sans-serif;line-height:28px;text-align:justify;background-color:#ffffff;margin-top:26px;margin-bottom:26px;">在奥特莱斯的发源地美国，多数城市只有一家奥特莱斯。而武汉现已在黄陂、江夏有两家奥特莱斯，武商集团也要在蔡甸新建奥特莱斯，后期可能还有新的奥特莱斯要入场。</p><p style="padding:0px;text-indent:2em;color:#252525;font-family:宋体, sans-serif;line-height:28px;text-align:justify;background-color:#ffffff;margin-top:26px;margin-bottom:26px;">武汉大学经管学院教授吴先明表示，面对市场竞争的优胜劣汰，商家会不断提升自己服务、品牌，消费者也可货比三家。奥特莱斯卖名牌尾货，受市场与品牌制约比较大，想要生存下去，考验的是“国际大牌”的聚合力，不适应者必然会被市场淘汰。</p><p style="padding:0px;text-indent:2em;color:#252525;font-family:宋体, sans-serif;line-height:28px;text-align:justify;background-color:#ffffff;margin-top:26px;margin-bottom:26px;">武商集团总经理刘聪表示，武汉消费者的购买力、时尚度在与国际接轨，人们对名品的需求增加。而国际大牌也有处理库存和尾货的需求，有的名品还专门开一条线，为奥特莱斯供货，奥特莱斯与名品正价店可以互补式共存。他分析，名品正价旗舰店集中在市区，奥特莱斯开在郊区，两者所售货品也不同，前者都是与国际同步的最新款商品，后者卖的多是过季的老款、尾货。</p><p><br /></p>', 0, 1396512764, NULL, 1, 0),
+(27, 86, '体验为王 星巴克走进优衣库、梅西百货、Target超市', '/2014/04/03/533d18824640c.jpg', '', NULL, NULL, '<p style="padding:0px;border:0px;font-size:14px;position:relative;color:#333333;font-family:宋体, arial, sans-serif;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:13px;">互联网时代，地面店客流下滑是世界性难题，如何吸引顾客来逛店，并让他们逗留更久的时间？提供更丰富多彩的体验是关键。</p><p style="padding:0px;border:0px;font-size:14px;position:relative;color:#333333;font-family:宋体, arial, sans-serif;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:13px;">　　据 PSFK报道，纽约的<a href="http://news.winshang.com/search/%E4%BC%98%E8%A1%A3%E5%BA%93" target="_blank" title="查看“优衣库”相关的新闻" style="color:#004cb8;">优衣库</a>（<a href="http://www.winshang.com/zt/list.aspx?key=%D3%C5%D2%C2%BF%E2" target="_blank" title="查看“优衣库”相关专题" style="color:#ff9900;">专题阅读</a>）（<a href="http://biz.winshang.com/Pp-4680.html" target="_blank" title="查看“优衣库”拓展选址信息" style="color:#ff9900;">拓展选址信息</a>）旗舰店首开风气，上周五，成为全美第一家在店内引入<a href="http://news.winshang.com/search/%E6%98%9F%E5%B7%B4%E5%85%8B" target="_blank" title="查看“星巴克”相关的新闻" style="color:#004cb8;">星巴克</a>（<a href="http://www.winshang.com/zt/list.aspx?key=%D0%C7%B0%CD%BF%CB" target="_blank" title="查看“星巴克”相关专题" style="color:#ff9900;">专题阅读</a>）（<a href="http://biz.winshang.com/Pp-19715.html" target="_blank" title="查看“星巴克”拓展选址信息" style="color:#ff9900;">拓展选址信息</a>）咖啡店的服装零售商。</p><p style="padding:0px;border:0px;font-size:14px;position:relative;color:#333333;font-family:宋体, arial, sans-serif;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:13px;">　　此前，美国的<a href="http://news.winshang.com/search/%E6%A2%85%E8%A5%BF%E7%99%BE%E8%B4%A7" target="_blank" title="查看“梅西百货”相关的新闻" style="color:#004cb8;">梅西百货</a>、<a href="http://news.winshang.com/search/Target" target="_blank" title="查看“Target”相关的新闻" style="color:#004cb8;">Target</a> 超市和 Barnes and Noble 书店都先后引入了星巴克。</p><p style="padding:0px;border:0px;font-size:14px;position:relative;color:#333333;font-family:宋体, arial, sans-serif;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:13px;">　　此外，优衣库还在店内摆放了沙发，桌子。椅子和一个iPad 站供顾客使用。要能多留住顾客一会儿，就能增加他们在店内购物的几率。</p><p style="padding:0px;border:0px;font-size:14px;position:relative;color:#333333;font-family:宋体, arial, sans-serif;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:13px;">　　不仅如此，优衣库还赞助了隔壁的纽约现代艺术馆（MoMA）周五免费开放计划，继而还与MoMA 合作，推出限量版服装配饰“SPRZ NY”, 采用了著名现代艺术家Andy Warhol, Jean-Michel Basquiat, Sarah Morris 等人的画作，产品多达200多种，包括手袋、T恤等，通过优衣库全球门店和网站销售。</p><p style="padding:0px;border:0px;font-size:14px;position:relative;color:#333333;font-family:宋体, arial, sans-serif;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:13px;">　　其他服装品牌也纷纷展开跨界合作，Gap 的概念店开始售卖第三方提供的杂志、书籍等非服装产品，Ralph Lauren 公司旗下的 Club Monaco 把布鲁克林地区当红的 Toby’s Estate 咖啡馆和纽约著名的The Strand 书店请进自己的旗舰店；设计师品牌 John Varvatos 甚至在自己的店里开设了酒吧。</p><p style="padding:0px;border:0px;font-size:14px;position:relative;color:#333333;font-family:宋体, arial, sans-serif;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:13px;">　　按此趋势，更多的品牌服装零售店将演化为一站式购物和休闲场所。</p><p><img src="/Uploads/remoteImage/93861396512862.jpg" width="625" height="418" /><br /></p>', 0, 1396512898, NULL, 1, 0),
+(28, 86, '深圳常住人口增速放缓购物中心竞争压力大', '/2014/04/03/533d18cc74b45.jpg', '', NULL, NULL, '<p style="padding:0px;font-family:宋体;font-size:14px;line-height:25.200000762939453px;background-color:#ffffff;margin-top:12px;margin-bottom:12px;">　深圳综合百货、购物中心的人均面积8年翻番，但深圳常住人口增速持续变缓，加剧购物中心竞争压力。</p><p style="padding:0px;font-family:宋体;font-size:14px;line-height:25.200000762939453px;background-color:#ffffff;margin-top:12px;margin-bottom:12px;">　　深圳作为全国四大一线城市之一，其商业地产经过10年的高速发展，已基本实现百货及购物中心遍地开花。根据深圳中原研究中心监测，当前深圳全市经营面积在1万平方米以上的综合百货、购物中心总面积约为548万平方米，主要分布在南山、罗湖两大区域，面积占比都在20%以上，其次是宝安和福田区。</p><p style="padding:0px;font-family:宋体;font-size:14px;line-height:25.200000762939453px;background-color:#ffffff;margin-top:12px;margin-bottom:12px;">　　深圳中原研究中心认为，受深圳原关内土地资源的限制，深圳住宅市场开发逐步向宝安、龙岗关外区域迈进，再加上关内区域房价高企，越来越多的人选择在关外区域居住。强大的需求使百货及购物中心也紧随而上，宝安中心区、龙岗中心区大型综合性购物中心迅速崛起。统计数据显示，2010年以来全市开业的44个综合百货及购物中心中，一半以上集中在关外两区。</p><p style="padding:0px;font-family:宋体;font-size:14px;line-height:25.200000762939453px;background-color:#ffffff;margin-top:12px;margin-bottom:12px;">　　尽管购物中心呈爆发式增长，但与之相对的购买力却没有相应的增速。据统计，深圳常住人口的增长率已经由2010年以前的4%以上下降到不足1%。百货、购物中心开业速度的提高遇上常住人口增速的下降，使深圳综合百货、购物中心的人均面积在2006年至2013年的8年间，从0.24平方米增加到0.51平方米。</p><p style="padding:0px;font-family:宋体;font-size:14px;line-height:25.200000762939453px;background-color:#ffffff;margin-top:12px;margin-bottom:12px;">　　有业内人士表示，这个增幅不算快。据了解，去年<a href="http://news.hexun.com/2013/shanghai1/index.html" target="_blank" style="color:#485a90;">上海</a>人均购物中心面积已接近2平方米。</p><p style="padding:0px;font-family:宋体;font-size:14px;line-height:25.200000762939453px;background-color:#ffffff;margin-top:12px;margin-bottom:12px;">　　有关研究结果表明，现阶段中国主要城市的人均购物中心面积在0.1平方米~0.6平方米之间，深圳商业地产发展基本跟随了中国大部分城市的步伐。不过，眼下各大购物中心的竞争压力明显增大。</p><p style="padding:0px;font-family:宋体;font-size:14px;line-height:25.200000762939453px;background-color:#ffffff;margin-top:12px;margin-bottom:12px;">　　深圳中原地产认为，在百货及购物中心高速发展的今天，发展商业地产除了考虑选址、周边竞争等因素外，商场的定位、业态规划其实更加重要。例如在购物中心发展成熟的福田、罗湖区，既有像mini万象城一样定位独特的成功案例，也有像皇庭广场这样定位高度同质化的失败案例。在购物中心刚起步的龙岗、宝安区，同样也有像万科广场一样的成功案例，也有像海雅缤纷城一样经营一般的案例</p><p><br /></p>', 0, 1396512972, NULL, 1, 0),
+(29, 86, '多家百货推出优惠 新鞋上市打折幅度增加10%', NULL, '', NULL, NULL, '<p style="padding:0px;color:#454545;font-family:宋体;font-size:14px;line-height:26px;background-color:#ffffff;margin-top:20px;margin-bottom:20px;">(羊城晚报记者 孙晶)记者昨日从广州多家百货获悉，虽然跟线上的融合成为一种选择，但是发挥线下优势做强品类也成为了当前百货急需改变的方向，鞋类产品可能就是一个突破口。 </p><p style="padding:0px;color:#454545;font-family:宋体;font-size:14px;line-height:26px;background-color:#ffffff;margin-top:20px;margin-bottom:20px;">　　近期，中国的鞋业上市公司纷纷发布年报，其中百丽净利润增速放缓至4.43%、达芙妮净利率预期跌至低单位数、星期六和千百度净利润跌幅双双超过20%。</p><div class="article-video" style="margin:7px 15px 0px 0px;padding:0px;float:left;display:inline;width:320px;height:266px;overflow:auto;clear:both;color:#454545;font-family:宋体;font-size:14px;line-height:26px;background-color:#ffffff;"><iframe src="http://gd.sina.com.cn/zs/iframe/340/2014/0122/6.html" marginwidth="0" marginheight="0" frameborder="0" height="250" width="303" scrolling="no" style="margin:0px;padding:0px;"></iframe></div><p style="padding:0px;color:#454545;font-family:宋体;font-size:14px;line-height:26px;background-color:#ffffff;margin-top:20px;margin-bottom:20px;">　　虽然整体销售下滑，但是在广州的百货鞋类销售领域，却依然有看头。“去年鞋类销售增速达到两位数。我们很看好鞋类在百货的销售。”摩登百货相关负责人告诉记者。就在三个月前，中华百货更是斥资千万元打造皮鞋皮具馆，囊括鞋类皮具品牌70个。中华百货总经理窦怀山表示，鞋类讲究试穿舒适性和个性搭配，是受到电商冲击较少的百货品类，因此单独拿出来做大做全。</p><p style="padding:0px;color:#454545;font-family:宋体;font-size:14px;line-height:26px;background-color:#ffffff;margin-top:20px;margin-bottom:20px;">　　要跟线上销售抢生意，价格是不可避免的焦点。昨日，记者巡城发现，多家百货早早就将新上市的凉鞋推出折扣优惠。摩登百货鞋类商品负责人表示：“今年凉鞋的价格普遍在600元左右。凉鞋的标价比去年有所提升，但是实际购买价格在下调。去年此时，新上市的凉鞋最多打八折，但是今年不少商场的新款凉鞋已经打到了7折。”与此同时，记者巡城广州多家百货的鞋类专卖区，发现不少品牌的新款凉鞋也推出了7折、7.5折或者8折的促销。</p><p><br /></p>', 0, 1396513012, NULL, 1, 0),
+(30, 86, '摩尔百货掀起春季购物潮', NULL, '', NULL, NULL, '<p style="padding:0px;text-indent:2em;color:#252525;font-family:宋体, sans-serif;line-height:28px;text-align:justify;background-color:#ffffff;margin-top:26px;margin-bottom:26px;">进入4月，春天的脚步越来越近，摩尔百货特别推出“风之声，觅春行”系列活动，为消费者提供各种春季购物惊喜优惠。</p><p style="padding:0px;text-indent:2em;color:#252525;font-family:宋体, sans-serif;line-height:28px;text-align:justify;background-color:#ffffff;margin-top:26px;margin-bottom:26px;">满额送好礼</p><p style="padding:0px;text-indent:2em;color:#252525;font-family:宋体, sans-serif;line-height:28px;text-align:justify;background-color:#ffffff;margin-top:26px;margin-bottom:26px;">4月5日-7日期间，摩尔百货会员关注摩尔百货官方微信并发送VIP号即可获200积分；持摩尔百货会员卡任意消费即可享两小时免费停车服务；消费满100元即可领取精美礼品一份；活动期间会员招募，当日消费满300元即可免费办理会员卡一张。此外，4月4日至7日商场购物满额送好礼，当天全场累计消费800元—1499元可领取彩色杂物篮或保险碗一个；满1500元及以上可领取家庭医药包/工具箱/保鲜碗一个（三选一），礼品数量有限，送完即止。</p><p style="padding:0px;text-indent:2em;color:#252525;font-family:宋体, sans-serif;line-height:28px;text-align:justify;background-color:#ffffff;margin-top:26px;margin-bottom:26px;">春购享春游</p><p style="padding:0px;text-indent:2em;color:#252525;font-family:宋体, sans-serif;line-height:28px;text-align:justify;background-color:#ffffff;margin-top:26px;margin-bottom:26px;"><br /></p><div class="gg200x300" style="padding:19px;margin:0px 22px 0px 0px;overflow:hidden;text-align:center;font-size:0px;line-height:0;float:left;border:1px solid #e5e5e5;color:#252525;font-family:宋体, sans-serif;background-color:#ffffff;"><iframe src="http://g.163.com/r?site=netease&amp;affiliate=news&amp;cat=article&amp;type=logo300x250&amp;location=13" width="300" height="250" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></div><p style="padding:0px;text-indent:2em;color:#252525;font-family:宋体, sans-serif;line-height:28px;text-align:justify;background-color:#ffffff;margin-top:26px;margin-bottom:26px;">除此之外，摩尔百货还为顾客准备了各类“春游好礼”。1F—防晒，保湿系列化妆品部分8折，购化妆品满300元送美容卡一张（4月4日-7日）；2F—累计消费满300元送青白江樱花节门票一张（4月5日）；3F—购指定dp展示的混搭时髦运动成套服饰，即可享武隆动车往返三日游名额一个（4月5日-7日）；5F—累计消费满500元送旅游景点门票一张（4月5日-7日），以上活动礼品送完即止。</p><p style="padding:0px;text-indent:2em;color:#252525;font-family:宋体, sans-serif;line-height:28px;text-align:justify;background-color:#ffffff;margin-top:26px;margin-bottom:26px;">同时，活动期间顾客可在1楼领取“许愿树叶”填写2014年心愿，参与“向龙猫许愿”活动，4月5日当天凭任意消费小票和摩尔百货会员卡可与玩偶亲密互动，并获得与龙猫立拍得相片一张，即拍即得。下午3：00还将有知名DJ与您一同进行觅春之旅，更有开心运动会赢500元踏青基金。</p><p><br /></p>', 0, 1396513047, NULL, 1, 0),
+(31, 86, '百货商业线上线下融合 新鞋上市打折幅度增加10%', NULL, '', NULL, NULL, '<p style="padding:0px;border:0px;font-size:14px;position:relative;color:#333333;font-family:宋体, arial, sans-serif;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:13px;">记者昨日从广州多家百货获悉，虽然跟线上的融合成为一种选择，但是发挥线下优势做强品类也成为了当前百货急需改变的方向，鞋类产品可能就是一个突破口。</p><p style="padding:0px;border:0px;font-size:14px;position:relative;color:#333333;font-family:宋体, arial, sans-serif;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:13px;">　　近期，中国的鞋业上市公司纷纷发布年报，其中<a href="http://news.winshang.com/search/%b0%d9%c0%f6" target="_blank" title="查看“百丽”相关的新闻" style="color:#004cb8;">百丽</a>（<a href="http://biz.winshang.com/Pp-20620.html" target="_blank" title="查看“百丽”拓展选址信息" style="color:#ff9900;">拓展选址信息</a>）净利润增速放缓至4.43%、<a href="http://news.winshang.com/search/%b4%ef%dc%bd%c4%dd" target="_blank" title="查看“达芙妮”相关的新闻" style="color:#004cb8;">达芙妮</a>（<a href="http://biz.winshang.com/Pp-21739.html" target="_blank" title="查看“达芙妮”拓展选址信息" style="color:#ff9900;">拓展选址信息</a>）净利率预期跌至低单位数、<a href="http://news.winshang.com/search/%d0%c7%c6%da%c1%f9" target="_blank" title="查看“星期六”相关的新闻" style="color:#004cb8;">星期六</a>和<a href="http://news.winshang.com/search/%c7%a7%b0%d9%b6%c8" target="_blank" title="查看“千百度”相关的新闻" style="color:#004cb8;">千百度</a>净利润跌幅双双超过20%。</p><p style="padding:0px;border:0px;font-size:14px;position:relative;color:#333333;font-family:宋体, arial, sans-serif;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:13px;">　　虽然整体销售下滑，但是在广州的百货鞋类销售领域，却依然有看头。“去年鞋类销售增速达到两位数。我们很看好鞋类在百货的销售。”<a href="http://news.winshang.com/search/%c4%a6%b5%c7%b0%d9%bb%f5" target="_blank" title="查看“摩登百货”相关的新闻" style="color:#004cb8;">摩登百货</a>相关负责人告诉记者。就在三个月前，中华百货更是斥资千万元打造皮鞋皮具馆，囊括鞋类皮具品牌70个。中华百货总经理窦怀山表示，鞋类讲究试穿舒适性和个性搭配，是受到电商冲击较少的百货品类，因此单独拿出来做大做全。</p><p style="padding:0px;border:0px;font-size:14px;position:relative;color:#333333;font-family:宋体, arial, sans-serif;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:13px;">　　要跟线上销售抢生意，价格是不可避免的焦点。昨日，记者巡城发现，多家百货早早就将新上市的凉鞋推出折扣优惠。摩登百货鞋类商品负责人表示：“今年凉鞋的价格普遍在600元左右。凉鞋的标价比去年有所提升，但是实际购买价格在下调。去年此时，新上市的凉鞋最多打八折，但是今年不少商场的新款凉鞋已经打到了7折。”与此同时，记者巡城广州多家百货的鞋类专卖区，发现不少品牌的新款凉鞋也推出了7折、7.5折或者8折的促销</p><p style="padding:0px;border:0px;font-size:14px;position:relative;color:#333333;font-family:宋体, arial, sans-serif;line-height:26px;background-color:#ffffff;text-align:center;margin-top:0px;margin-bottom:13px;"><img width="550" height="367" src="http://news.winshang.com/member/FCK/2014/4/3/201443104539953802.jpg" style="margin:0px;padding:0px;border:none;vertical-align:top;" /></p><p style="padding:0px;border:0px;font-size:14px;position:relative;color:#333333;font-family:宋体, arial, sans-serif;line-height:26px;background-color:#ffffff;text-align:center;margin-top:0px;margin-bottom:13px;">夏天未至，凉鞋已惊爆3.8折特价</p><p><br /></p>', 0, 1396513087, NULL, 1, 1),
+(32, 86, '传统百货业转型之变的平衡策略 亟需找准发展突破口', '/2014/04/03/533d19766b520.jpg', '', NULL, NULL, '<p style="padding:0px;border:0px;font-size:14px;position:relative;color:#333333;font-family:宋体, arial, sans-serif;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:13px;">“2013年消费环境的变数之多属近年之最。宏观经济形势的变化，商务、礼品消费锐减引起消费结构的变化，<a href="http://news.winshang.com/search/%b5%e7%c9%cc" target="_blank" title="查看“电商”相关的新闻" style="color:#004cb8;">电商</a>冲击带来消费者购物方式和意愿的变化，一二线城市租金不断提高对经营模式带来的变化等，给百货零售业带来了严峻的考验。由于欠缺商品采购和营运管理能力，<a href="http://news.winshang.com/search/%d7%d4%d3%aa" target="_blank" title="查看“自营”相关的新闻" style="color:#004cb8;">自营</a>缺少批发业支持，2013年百货企业在经营发展中的问题不断涌现。百货企业亟待通过加大自营比重、开发自有品牌等差异化经营，找准转型发展突破口。”在日前举办的第十二届中国百货业高峰论坛上，中国百货商业协会会长楚修齐在发布《2013年中国百货行业发展报告》时如是表示。《报告》显示，在全国社会消费品零售总额增长率创5年新低的背景下，中国百货商业协会对部分会员企业2013经营年度初步统计数据显示，130家企业商业销售总额为6437.6768亿元，比2012年的5771.095亿元增长了11.55%;主营业务利润统计为227.3607亿元，比2012年主营业务利润的222.2604亿元增长了2.29%。</p><p style="padding:0px;border:0px;font-size:14px;position:relative;color:#333333;font-family:宋体, arial, sans-serif;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:13px;"> </p><center style="color:#333333;font-family:宋体, arial, sans-serif;font-size:14px;line-height:26px;background-color:#ffffff;"><img width="403" height="241" src="http://news.winshang.com/member/FCK/2014/4/3/20144394215218924.jpg" style="margin:0px;padding:0px;border:none;vertical-align:top;" /></center><p style="padding:0px;border:0px;font-size:14px;position:relative;color:#333333;font-family:宋体, arial, sans-serif;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:13px;">　　<strong>百货经营结构生变</strong></p><p style="padding:0px;border:0px;font-size:14px;position:relative;color:#333333;font-family:宋体, arial, sans-serif;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:13px;">　　分析2013年全国主要百货零售业销售额构成可见，一二线城市百货业销售额稳中增长;三四线城市由于城镇化建设加速，百货零售业也得到了快速发展，除了销售增速高于一二线城市外，规模扩张速度也快于一二线城市，尤其商业综合体在三四线城市呈现出快速发展态势。</p><p style="padding:0px;border:0px;font-size:14px;position:relative;color:#333333;font-family:宋体, arial, sans-serif;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:13px;">　　分析连锁百货的经营业绩可得，区域性百货企业以其优越的商业地段、区域集中建店的规模、方便的物流配送环境、相对较低的经营成本、较高的消费者忠诚度以及强势的供应商支持等优势，保持着稳固的区域竞争力，甚至区域垄断性地位，区域百货企业经营业绩呈现出好于全国性经营的百货企业的特征。</p><p style="padding:0px;border:0px;font-size:14px;position:relative;color:#333333;font-family:宋体, arial, sans-serif;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:13px;">　　此外，百货业态更加多元化，细分现象更加凸显。在百货店选址、目标顾客定位、设施规模、商品结构、经营环境、服务标准及便利性等方面，百货企业划分出在一二线城市提档升级的高档百货店，以青年消费群体为目标顾客，满足他们追求时尚、时髦需求的时尚百货店，突出专业特色，在布局陈列上将某类商品设为重要区域的主题百货店，集高档、时尚和主流生活需求于一体的生活百货店，以及尤其受到三四线城市消费群体欢迎的折扣百货店等类型，以此博得顾客认可并为企业带来级差利益。</p><p><br /></p>', 0, 1396513142, NULL, 1, 21),
+(33, 86, '美容百货公司', '/2014/04/03/533d19acbf2ad.jpg', '', NULL, NULL, '<p style="padding:0px 10px;border:0px;line-height:22.399999618530273px;letter-spacing:0.5px;font-family:宋体;font-size:14px;background-color:#ffffff;margin-top:0px;margin-bottom:24px;">火爆潮流</p><p style="padding:0px 10px;border:0px;line-height:22.399999618530273px;letter-spacing:0.5px;font-family:宋体;font-size:14px;background-color:#ffffff;margin-top:0px;margin-bottom:24px;">　　传统购物中心纷纷尝试转型，走在零售前沿的香港自然会有许多新玩法，例如位处旺角的朗豪坊便引入美容百货公司概念。自从全新的大型化妆美容概念店BEAUTY AVENUE于朗豪坊开业，单是这家楼高两层占地约2000平方米的“美容百货公司”已云集55个国际顶尖化妆、护肤、香氛及个人护理品牌，其中GIORGIO ARMANI、BOBBI BROWN、SISLEY、雪花秀及BURBERRY BEAUTY更是首次进驻旺角；连同早前进驻商场2楼美容专层的高档天然护肤品牌Fresh，以及最新进场的韩国潮牌too cool for school，朗豪坊的化妆美容品牌已增添至近80个。</p><p><br /></p>', 0, 1396513196, NULL, 1, 6),
+(34, 86, '中国三胞集团出4.5亿英镑收购英国百货公司', '/2014/04/03/533d19db57efc.jpg', '', NULL, NULL, '<p class="detailPic" style="margin:0px auto 10px;padding:0px;text-indent:28px;font-size:14px;text-align:center;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;"><img src="http://y0.ifengimg.com/25aed3ee011c4538/2014/0403/rdn_533cc05e33a33.jpg" style="border:0px;vertical-align:bottom;display:block;margin:0px auto;" /></p><p class="picIntro" style="padding:0px;text-indent:28px;font-size:14px;text-align:center;font-family:楷体_gb2312, 楷体;color:#2b2b2b;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">中国三胞集团出4.5亿英镑收购英国百货公司</p><p style="padding:0px;text-indent:28px;font-size:14px;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">LADYMAX时尚网独家报道：House of Fraser是一间具有160余年历史的英国；老牌百货商店，旗下有着60多间分店。日前，来自中国南京的三胞集团目前正在与这个英国高街连锁店商量收购事宜。三胞集团给出的收购价格为4.5亿英镑。</p><p class="detailPic" style="margin:0px auto 10px;padding:0px;text-indent:28px;font-size:14px;text-align:center;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;"><img src="http://y0.ifengimg.com/25aed3ee011c4538/2014/0403/rdn_533cc05d22dae.jpg" style="border:0px;vertical-align:bottom;display:block;margin:0px auto;" /></p><p class="picIntro" style="padding:0px;text-indent:28px;font-size:14px;text-align:center;font-family:楷体_gb2312, 楷体;color:#2b2b2b;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">中国三胞集团出4.5亿英镑收购英国百货公司</p><p style="padding:0px;text-indent:28px;font-size:14px;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">据悉，目前三胞集团提出的收购方案已经取得House of Fraser主席Don McCarthy的同意，McCarthy家族持有公司20%的股份。 </p><p style="padding:0px;text-indent:28px;font-size:14px;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">该收购方案还被呈现给其它股东，包括冰岛多家银行（共持股49%）和持有11%股份的苏格兰企业家Tom Hunter。 </p><p style="padding:0px;text-indent:28px;font-size:14px;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">House of Fraser年销售量达到12亿英镑，公司共有7,300名员工。公司从去年开始就在物色新的投资者，近日还关闭了在北安普顿的分公司。 </p><p style="padding:0px;text-indent:28px;font-size:14px;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">据消息来源透露，House of Fraser还有一个出路是在伦敦的交易所寻求上市。 </p><p style="padding:0px;text-indent:28px;font-size:14px;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">其实在此之前法国的老佛爷百货（Galeries Lafayette）曾与House of Fraser就收购进行洽淡，却无果而终。 </p><p style="padding:0px;text-indent:28px;font-size:14px;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">三胞集团的董事长是袁亚非，该公司是一家以信息化为特征，以现代服务业为核心，集商业连锁、电子商务及物流、信息服务、房地产开发、投资与金融服务五大板块于一体的大型企业集团，拥有宏图高科、南京新百两家上市平台，以及宏图三胞、宏图地产、广州金鹏、南京富士通等重点企业，旗下独资或控股企业超过100家，员工人数逾30000人。 </p><p style="padding:0px;text-indent:28px;font-size:14px;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">2012年，三胞集团总资产已突破300亿元，年销售额超480亿元。此外，2014年初，三胞集团以逾20亿元人民币收购了李嘉诚旗下长江实业附属公司管理的南京国际金融中心，并称该收购目的是“要和周围两座集团控股的商场一起，发展商业协同效应”。（翻译撰写：pink）</p><p><br /></p>', 0, 1396513243, NULL, 1, 0),
+(35, 86, '本土百货逆市扩张 天河城瞄准二三线开奥特莱斯(2)', '/2014/04/03/533d1a0a762a2.jpg', '', NULL, NULL, '<p style="border:0px;padding:0px;list-style:none;text-indent:2em;color:#333333;font-family:宋体, arial, helvetica, sans-serif;font-size:14px;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:0px;">八项规定颁布百货企业预收账款下降</p><p style="border:0px;padding:0px;list-style:none;text-indent:2em;color:#333333;font-family:宋体, arial, helvetica, sans-serif;font-size:14px;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:0px;">而自2012年底中央八项规定颁布,整个2013年百货业受到影响,同花顺iFinD数据显示, 23家百货零售企业中有14家出现预收账款下降情况。一位从事百货业五年的人士分析,在百货零售业内预收款项主要来自于购物卡、礼品卡等预付卡。正如预收账款下降幅度较大的杭州解百解释称,预收款项大幅下降来自于团购预收款减少;而徐家汇也提到,公司预收账款下降的主要原因是本期出售的预付卡数量减少。</p><p style="border:0px;padding:0px;list-style:none;text-indent:2em;color:#333333;font-family:宋体, arial, helvetica, sans-serif;font-size:14px;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:0px;">有分析认为,虽然预收账款与公司盈利能力没有直接关系,但消费疲软导致销售低迷以及频繁打折促销带来的毛利率下降,百货零售公司业绩或在2014年继续承压。</p><p style="border:0px;padding:0px;list-style:none;text-indent:2em;color:#333333;font-family:宋体, arial, helvetica, sans-serif;font-size:14px;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:0px;">部分百货2013年业绩(单位:亿元)</p><p style="border:0px;padding:0px;list-style:none;text-indent:2em;color:#333333;font-family:宋体, arial, helvetica, sans-serif;font-size:14px;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:0px;">公司 营收同比 净利润同比 毛利率</p><p style="border:0px;padding:0px;list-style:none;text-indent:2em;color:#333333;font-family:宋体, arial, helvetica, sans-serif;font-size:14px;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:0px;">广百股份77.65.59% 2.2215.22% 19.42%</p><p style="border:0px;padding:0px;list-style:none;text-indent:2em;color:#333333;font-family:宋体, arial, helvetica, sans-serif;font-size:14px;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:0px;">王府井 197.98.35% 6.943.09% 19.82%</p><p style="border:0px;padding:0px;list-style:none;text-indent:2em;color:#333333;font-family:宋体, arial, helvetica, sans-serif;font-size:14px;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:0px;">广州友谊40.92-8.26% 3.09-19.06%22%</p><p style="border:0px;padding:0px;list-style:none;text-indent:2em;color:#333333;font-family:宋体, arial, helvetica, sans-serif;font-size:14px;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:0px;">杭州解百20.996-2.19% 0.63-18.63%16.64%</p><p style="border:0px;padding:0px;list-style:none;text-indent:2em;color:#333333;font-family:宋体, arial, helvetica, sans-serif;font-size:14px;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:0px;">新华百货66.0510.09% 2.01-16.88%18.93%</p><p style="border:0px;padding:0px;list-style:none;text-indent:2em;color:#333333;font-family:宋体, arial, helvetica, sans-serif;font-size:14px;line-height:26px;background-color:#ffffff;margin-top:0px;margin-bottom:0px;">(注:数据来源于同花顺iFinD)</p><p><br /></p>', 0, 1396513290, NULL, 1, 1),
+(36, 86, '阳光百货踏青季开启 满额赠青岛风光丝巾', '/2014/04/03/533d1a9ab0fb8.jpg', '', NULL, NULL, '<p style="padding:0px;text-indent:28px;font-size:14px;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">沐春寻芳，阳光百货踏青季欣然开启，4月4日-7日，2014春季新品服饰7.8折主打，部分品牌再享满1500返100全馆通用礼金，满额更赠青岛风光丝巾！</p><p style="padding:0px;text-indent:28px;font-size:14px;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">春“色”交响</p><p style="padding:0px;text-indent:28px;font-size:14px;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">化妆品：雅诗兰黛、兰蔻、香奈儿、迪奥等满600返100/1000返200（全馆通用）；部分品牌满249抵50；美妆聚划算同步呈现；外地顾客购物享特别加赠；</p><p style="padding:0px;text-indent:28px;font-size:14px;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">珠宝：和田玉、翡翠、太阳镜6.2折主打，黄金饰品部分每克直降15元，镶嵌、K金满2000减100；周大福限量黄金版“日月星云电”、“六字真言”每克优惠30元，独家预售；</p><p style="padding:0px;text-indent:28px;font-size:14px;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">春“衣”焕然</p><p style="padding:0px;text-indent:28px;font-size:14px;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">2F/3F单笔购物满2000元即赠价值168元的青岛风光丝巾一条；</p><p style="padding:0px;text-indent:28px;font-size:14px;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">国际名品部分品牌满3000返200/满6000返500元礼金；</p><p style="padding:0px;text-indent:28px;font-size:14px;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">2F天桥kookai、璐帕莎、艾露尔1-5折特卖；</p><p style="padding:0px;text-indent:28px;font-size:14px;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">GORNIA会员日，部分2-5折，会员享双倍积分；</p><p style="padding:0px;text-indent:28px;font-size:14px;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">子苞米1F前厅静态展，邀您体验；</p><p style="padding:0px;text-indent:28px;font-size:14px;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">完美“履”程</p><p style="padding:0px;text-indent:28px;font-size:14px;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">3F天桥美鞋大集缤纷呈现,七大品牌、近万双男女美鞋299起售5折封顶：其乐部分2-5折；迪宝部分一口价299元，部分1-5折；迪迈奇部分一口价399元、499元，部分2-3折；兰芷妮部分一口价299元、399元，部分2-4折；GEOX部分5折；嘉宝、SIOUX部分4-5折；江博士童鞋部分7-8折；</p><p style="padding:0px;text-indent:28px;font-size:14px;color:#2b2b2b;font-family:simsun, arial, helvetica, clean, sans-serif;line-height:24px;background-color:#ffffff;margin-top:0px;margin-bottom:25px;">都彭部分3-5折，部分一双8折、两双7.5折、三双6.5折。</p><p><br /></p>', 0, 1396513434, NULL, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -3002,6 +3009,8 @@ CREATE TABLE IF NOT EXISTS `bh_category` (
   `catname` varchar(50) DEFAULT NULL,
   `path` varchar(50) DEFAULT NULL,
   `level` int(11) DEFAULT NULL,
+  `params` varchar(128) DEFAULT NULL,
+  `custom_url` varchar(256) DEFAULT NULL,
   `listorder` int(11) DEFAULT '0',
   `title` varchar(225) DEFAULT NULL,
   `keywords` varchar(225) DEFAULT NULL,
@@ -3009,23 +3018,23 @@ CREATE TABLE IF NOT EXISTS `bh_category` (
   `status` tinyint(1) DEFAULT NULL,
   `content` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=112 ;
 
 --
 -- 转存表中的数据 `bh_category`
 --
 
-INSERT INTO `bh_category` (`id`, `pid`, `modelname`, `catname`, `path`, `level`, `listorder`, `title`, `keywords`, `description`, `status`, `content`) VALUES
-(1, 0, 'Article', '新闻中心', '0', 1, 2, '新闻中心', '', '', 1, ''),
-(12, 0, 'Content', '关于百货', '0', 1, 1, '关于百货', '', '', 1, ''),
-(27, 0, 'Content', '联系我们', '0', 1, 7, '联系我们', '', '', 1, '<div class="our-map clearfix"> &nbsp;<img class="imgpic" width="634" height="418" src="http://maps.google.com/maps/api/staticmap?center=31.321168659663375,118.86782384999992&amp;zoom=16&amp;size=520x340&amp;maptype=roadmap&amp;markers=31.3213376,118.86750600000005&amp;sensor=false" /><p class="our-d"><img src="/Uploads/20140330/13961718549281.png" title="tb2.png" /><br />Nanjing Gaochun Department Store Co., Ltd<br />地址：南京市高淳区淳溪镇通贤街21号<br />电话：025-57324358<br />邮编：211300<br />网址：www.gcbhds.com.<br /></p></div>'),
-(44, 0, 'Article', '促销咨询', '0', 1, 4, '促销咨询', '', '', 1, ''),
-(45, 0, 'Content', '招商招标', '0', 1, 5, '招商招标', '', '', 1, ''),
-(36, 0, 'Content', '楼层导购', '0', 1, 3, '楼层导购', '', '', 1, '<p><span style="color:#333333;font-family:宋体, arial, verdana;font-size:14px;line-height:28px;"><img src="/yufucms_qy/Uploads//20130720/13743090875948.jpg" title="QQ截图20130314131513.jpg" style="float:left;" hspace="5" /> &nbsp; &nbsp;<span style="color:#333333;font-family:宋体, arial, verdana;font-size:12px;line-height:28px;">XXX科技有限公司，简称：<a href="http://www.yufu5.com" target="_blank">XX科技</a>,成立2007年，主</span><span style="color:#333333;font-family:宋体, arial, verdana;font-size:12px;line-height:28px;">要面向广大海内外客户提供域名注册、虚拟主机、网站建站、企业软件、电商培训等丰富的网络产品服务。</span></span><br style="margin:0px;padding:0px;color:#333333;font-family:宋体, arial, verdana;font-size:14px;line-height:28px;" /><span style="color:#333333;font-family:宋体, arial, verdana;font-size:12px;line-height:28px;"> &nbsp; &nbsp;XX的快速发展与其企业文化密不可分，XX人秉持“团结互助、敬业负责、恪守信誉、积极进取、勇于创新”的企业文化，汇聚了行业内的大量专业人士。核心团队均为该行业从业多年的专业人士，拥有丰富行业经验和较高威望，并不断改革创新，以满足客户多元化需求为己任，不断进取。 同时，XX坚守“专业品质、服务为本、诚信经营、恪守信誉”的核心价值观，为客户提供多样、安全、稳定、放心的产品。</span><br /></p>'),
-(37, 12, 'Content', '企业简介', '0', 2, 1, '企业简介', '', '', 1, '<div class="news"><p class="cen"><img src="/Uploads/20140330/1396177171141.jpg" title="pic4.jpg" style="float:none;" /></p><p>南京市高淳区百货大厦有限公司就位于高淳区商业主街道――通贤街现代文明示范街，前身是高淳百货一店，创建于1962年。2000年企业改制后，百货大厦秉承高效、务实、创新、感恩的企业精神，经过三次扩建改造，不断调整，提档升级，由过去的一个老字号国有商店，发展成为高淳区及安徽郎溪、宣城等周边地区较具影响力的现代百货商场。百货大厦1-5层营业面积14000多平方米，近600名员工，商场主要经营黄金珠宝、化妆品、新潮少淑、成熟女装、绅士名品、运动休闲、文胸内衣、羊绒毛衫、床上用品，鞋类箱包等商品。2012年公司实现零售额2亿元，纳税额超千万元，已连续多年被评为高淳区现代服务业&quot;纳税大户&quot;称号。</p><p>百货大厦是高淳区唯一的&quot;江苏省百城万店无假货活动示范店&quot;、首批&quot;江苏省诚信经营示范企业&quot;。企业还先后荣获江苏省&quot;诚信单位&quot;、江苏省&quot;价格诚信单位&quot;、江苏省&quot;诚信承诺联盟&#39;百佳&#39;示范企业&quot;、江苏省&quot;放心消费创建活动先进单位&quot;、江苏省&quot;文明单位&quot;、&quot;南京市五一劳动奖状&quot;单位等荣誉称号。</p><p>百货大厦楼层经营布局：<br />一楼：黄金珠宝、化妆品、鞋类、箱包、数码小家电、办公用品、烟酒<br />二楼：少淑女装、精品女装、文胸、饰品<br />三棂：精品男装、商务男装、时尚男装<br />四楼、运动休闲、青春休闲、健身器材<br />五楼：羊绒毛衫、内衣、童装、床上用品、羽绒服、客服中心</p></div>'),
-(38, 12, 'Content', '历年荣誉', '0', 2, 2, '历年荣誉', '', '', 1, '<p>南京市高淳区百货大厦有限公司就位于高淳区商业主街道――通贤街现代文明示范街，前身是高淳百货一店，创建于1962年。2000年企业改制后，百货大厦秉承高效、务实、创新、感恩的企业精神，经过三次扩建改造，不断调整，提档升级，由过去的一个老字号国有商店，发展成为高淳区及安徽郎溪、宣城等周边地区较具影响力的现代百货商场。百货大厦1-5层营业面积14000多平方米，近600名员工，商场主要经营黄金珠宝、化妆品、新潮少淑、成熟女装、绅士名品、运动休闲、文胸内</p><p>衣、羊绒毛衫、床上用品，鞋类箱包等商品。2012年公司实现零售额2亿元，纳税额超千万元</p><p><br /></p>'),
-(39, 12, 'Content', '组织架构', '0-12', 2, 3, '组织架构', '', '', 1, ''),
-(48, 0, 'Content', '人才招聘', '0', 1, 6, '人才招聘', '', '', 1, '<p><br /></p><p>扫一扫二维码，通过手机浏览</p><p><img src="/yufucms_qy/Uploads/qrcode.png" /><br /></p><p><br /></p><p>Android客户端下载地址：<a href="http://localhost/yufucms_dg/admin/index.php/Content/Uploads/yufucms.apk" target="_self" textvalue="点击下载">点击下载</a><br /></p>');
+INSERT INTO `bh_category` (`id`, `pid`, `modelname`, `catname`, `path`, `level`, `params`, `custom_url`, `listorder`, `title`, `keywords`, `description`, `status`, `content`) VALUES
+(86, 0, 'Article', '新闻中心', '0', 1, NULL, NULL, 2, '新闻中心', '', '', 1, ''),
+(85, 0, 'Article', '关于百货', '0', 1, '', 'javascript:;', 1, '关于百货', '', '', 1, ''),
+(91, 0, 'Content', '联系我们', '0', 1, '&noleft=1', '', 7, '联系我们', '', '', 1, '<div class="our-map clearfix"> &nbsp;<img class="imgpic" width="634" height="418" src="http://maps.google.com/maps/api/staticmap?center=31.321168659663375,118.86782384999992&amp;zoom=16&amp;size=520x340&amp;maptype=roadmap&amp;markers=31.3213376,118.86750600000005&amp;sensor=false" /><p class="our-d"><img src="/Uploads/20140330/13961718549281.png" title="tb2.png" /><br />Nanjing Gaochun Department Store Co., Ltd<br />地址：南京市高淳区淳溪镇通贤街21号<br />电话：025-57324358<br />邮编：211300<br />网址：www.gcbhds.com.<br /></p></div>'),
+(88, 0, 'Article', '促销咨询', '0', 1, NULL, NULL, 4, '促销咨询', '', '', 1, ''),
+(89, 0, 'Content', '招商招标', '0', 1, NULL, NULL, 5, '招商招标', '', '', 1, ''),
+(87, 0, 'Content', '楼层导购', '0', 1, NULL, NULL, 3, '楼层导购', '', '', 1, '<p><span style="color:#666666;font-family:微软雅黑;font-size:12px;line-height:25px;background-color:#ffffff;">百货大厦楼层经营布局：</span><br style="color:#666666;font-family:微软雅黑;font-size:12px;line-height:25px;background-color:#ffffff;" /><span style="color:#666666;font-family:微软雅黑;font-size:12px;line-height:25px;background-color:#ffffff;">一楼：黄金珠宝、化妆品、鞋类、箱包、数码小家电、办公用品、烟酒</span><br style="color:#666666;font-family:微软雅黑;font-size:12px;line-height:25px;background-color:#ffffff;" /><span style="color:#666666;font-family:微软雅黑;font-size:12px;line-height:25px;background-color:#ffffff;">二楼：少淑女装、精品女装、文胸、饰品</span><br style="color:#666666;font-family:微软雅黑;font-size:12px;line-height:25px;background-color:#ffffff;" /><span style="color:#666666;font-family:微软雅黑;font-size:12px;line-height:25px;background-color:#ffffff;">三棂：精品男装、商务男装、时尚男装</span><br style="color:#666666;font-family:微软雅黑;font-size:12px;line-height:25px;background-color:#ffffff;" /><span style="color:#666666;font-family:微软雅黑;font-size:12px;line-height:25px;background-color:#ffffff;">四楼、运动休闲、青春休闲、健身器材</span><br style="color:#666666;font-family:微软雅黑;font-size:12px;line-height:25px;background-color:#ffffff;" /><span style="color:#666666;font-family:微软雅黑;font-size:12px;line-height:25px;background-color:#ffffff;">五楼：羊绒毛衫、内衣、童装、床上用品、羽绒服、客服中心</span><br /></p>'),
+(92, 85, 'Content', '企业简介', '0-85', 2, '', '', 1, '企业简介', '', '', 1, '<div class="news"><p class="cen"><img src="/Uploads/20140330/1396177171141.jpg" title="pic4.jpg" style="float:none;" /></p><p>南京市高淳区百货大厦有限公司就位于高淳区商业主街道――通贤街现代文明示范街，前身是高淳百货一店，创建于1962年。2000年企业改制后，百货大厦秉承高效、务实、创新、感恩的企业精神，经过三次扩建改造，不断调整，提档升级，由过去的一个老字号国有商店，发展成为高淳区及安徽郎溪、宣城等周边地区较具影响力的现代百货商场。百货大厦1-5层营业面积14000多平方米，近600名员工，商场主要经营黄金珠宝、化妆品、新潮少淑、成熟女装、绅士名品、运动休闲、文胸内衣、羊绒毛衫、床上用品，鞋类箱包等商品。2012年公司实现零售额2亿元，纳税额超千万元，已连续多年被评为高淳区现代服务业&quot;纳税大户&quot;称号。</p><p>百货大厦是高淳区唯一的&quot;江苏省百城万店无假货活动示范店&quot;、首批&quot;江苏省诚信经营示范企业&quot;。企业还先后荣获江苏省&quot;诚信单位&quot;、江苏省&quot;价格诚信单位&quot;、江苏省&quot;诚信承诺联盟&#39;百佳&#39;示范企业&quot;、江苏省&quot;放心消费创建活动先进单位&quot;、江苏省&quot;文明单位&quot;、&quot;南京市五一劳动奖状&quot;单位等荣誉称号。</p><p>百货大厦楼层经营布局：<br />一楼：黄金珠宝、化妆品、鞋类、箱包、数码小家电、办公用品、烟酒<br />二楼：少淑女装、精品女装、文胸、饰品<br />三棂：精品男装、商务男装、时尚男装<br />四楼、运动休闲、青春休闲、健身器材<br />五楼：羊绒毛衫、内衣、童装、床上用品、羽绒服、客服中心</p></div>'),
+(93, 85, 'Content', '历年荣誉', '0', 2, NULL, NULL, 2, '历年荣誉', '', '', 1, '<p>南京市高淳区百货大厦有限公司就位于高淳区商业主街道――通贤街现代文明示范街，前身是高淳百货一店，创建于1962年。2000年企业改制后，百货大厦秉承高效、务实、创新、感恩的企业精神，经过三次扩建改造，不断调整，提档升级，由过去的一个老字号国有商店，发展成为高淳区及安徽郎溪、宣城等周边地区较具影响力的现代百货商场。百货大厦1-5层营业面积14000多平方米，近600名员工，商场主要经营黄金珠宝、化妆品、新潮少淑、成熟女装、绅士名品、运动休闲、文胸内</p><p>衣、羊绒毛衫、床上用品，鞋类箱包等商品。2012年公司实现零售额2亿元，纳税额超千万元</p><p><br /></p>'),
+(95, 85, 'Content', '组织架构', '0', 2, NULL, NULL, 3, '组织架构', '', '', 1, ''),
+(90, 0, 'Content', '人才招聘', '0', 1, NULL, NULL, 6, '人才招聘', '', '', 1, '<p style="color:#404040;font-family:simsun;font-size:12px;line-height:16.799999237060547px;background-color:#ffffff;text-align:left;"><span style="font-size:18px;font-family:宋体;"><strong>应届生招聘流程：</strong></span></p><div align="left" style="color:#404040;font-family:simsun;font-size:12px;line-height:16.799999237060547px;background-color:#ffffff;"><span style="font-size:16px;">1、校园宣讲会。<br />2、访问：<span style="color:#404040;font-family:simsun;line-height:16.799999237060547px;background-color:#ffffff;">www.gcbhdl.com</span> 注册简历，<span style="color:#ff6600;"><strong>并选择意向的职位</strong></span>（此步骤为必须项，否则简历无法进入招聘管理流程）。<br />3、技能测试＋素质测试。<br />4、ROUND 1 面试。<br />5、ROUND 2 面试。<br />6、录用。<br />7、签约。<br />8、实习。<br />9、毕业报到。</span></div><p style="color:#404040;font-family:simsun;font-size:12px;line-height:16.799999237060547px;background-color:#ffffff;text-align:left;"><span style="font-size:18px;"><strong>往届生招聘流程：</strong></span></p><p style="color:#404040;font-family:simsun;font-size:12px;line-height:16.799999237060547px;background-color:#ffffff;text-align:left;"><span style="font-size:16px;">1、访问：www.gcbhdl.com 注册简历，<strong><span style="color:#ff6600;">并选择意向的职位</span></strong>（此步骤为必须项，否则简历无法进入招聘管理流程）。<br />2、ROUND 1 面试（视需要安排笔试）。<br />3、ROUND 2 面试。<br />4、录用。<br />5、报到。</span></p><p><a href="http://localhost/yufucms_dg/admin/index.php/Content/Uploads/yufucms.apk" target="_self" textvalue="点击下载"></a><br /></p>');
 
 -- --------------------------------------------------------
 
@@ -3093,20 +3102,21 @@ CREATE TABLE IF NOT EXISTS `bh_link` (
   `listorder` smallint(5) NOT NULL,
   `create_time` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
 
 --
 -- 转存表中的数据 `bh_link`
 --
 
 INSERT INTO `bh_link` (`id`, `linktype`, `type`, `name`, `url`, `logo`, `listorder`, `create_time`) VALUES
-(18, 0, 0, '高淳邮政局', 'http://www.yufu5.com', '', 0, 1396157591),
-(19, 0, 0, '高淳邮政局', 'http://www.yufu5.com', '', 3, 1396157585),
-(20, 0, 0, '高淳邮政局', 'http://demo.yufu5.net/dg', '', 6, 1396157579),
-(21, 0, 0, '高淳邮政局', 'http://demo.yufu5.net/wx', '', 6, 1396157573),
-(22, 0, 0, '高淳邮政局', 'http://demo.yufu5.net/ewm', '', 12, 1396157567),
-(23, 0, 0, '高淳邮政局', 'http://demo.yufu5.net/qy', '', 15, 1396157560),
-(24, 0, 0, '高淳邮政局', 'http://demo.yufu5.net/gx', '', 10, 1396157554);
+(18, 0, 0, '百度', 'http://www.baidu.com', '', 0, 1396157591),
+(19, 0, 0, '新浪', 'http://www.sina.com', '', 3, 1396157585),
+(20, 0, 0, '搜狐', 'http://www.sohu.com', '', 6, 1396157579),
+(21, 0, 0, '网易', 'http://www.163.com', '', 6, 1396157573),
+(22, 0, 0, '腾讯', 'http://www.tencent.com', '', 12, 1396157567),
+(23, 0, 0, '优酷', 'http://www.youku.com', '', 15, 1396157560),
+(24, 0, 0, '京东', 'http://www.jd.com', '', 10, 1396157554),
+(25, 0, 0, '天猫', 'http://www.tmall.com', '', 10, 1396157554);
 
 -- --------------------------------------------------------
 
@@ -3213,14 +3223,15 @@ CREATE TABLE IF NOT EXISTS `bh_model` (
   `last` varchar(80) DEFAULT NULL,
   `theme` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- 转存表中的数据 `bh_model`
 --
 
 INSERT INTO `bh_model` (`id`, `name`, `table`, `listrows`, `header`, `prev`, `next`, `first`, `last`, `theme`) VALUES
-(1, '文章模型', 'Article', 18, '条数据', '上一页', '下一页', '首页', '末页', '<ul><li>%first%</li><li>%upPage%</li><li>%linkPage%</li><li>%downPage%</li><li>%end%</li><li><span class=\\\\\\"pageinfo\\\\\\">共 <strong>%totalRow%</strong> %header% <strong>%nowPage%/%totalPage%</strong>页</span></li></ul>'),
+(1, '文章模型', 'Article', 10, '条数据', '上一页', '下一页', '首页', '末页', '<span class="pageall">共 %totalPage% 页</span> %first% %upPage% %linkPage% %downPage% %end%'),
+(6, '公告模型', 'Announce', 10, '条数据', '上一页', '下一页', '首页', '末页', '<span class="pageall">共 %totalPage% 页</span> %first% %upPage% %linkPage% %downPage% %end%'),
 (2, '产品模型', 'Product', 12, '条数据', '上一页', '下一页', '首页', '末页', '<ul><li>%first%</li><li>%upPage%</li><li>%linkPage%</li><li>%downPage%</li><li>%end%</li><li><span class=\\"pageinfo\\">共 <strong>%totalRow%</strong> %header% <strong>%nowPage%/%totalPage%</strong>页</span></li></ul>'),
 (3, '下载模型', 'Download', 10, '条数据', '上一页', '下一页', '首页', '末页', '<ul><li>%first%</li><li>%upPage%</li><li>%linkPage%</li><li>%downPage%</li><li>%end%</li><li><span class=\\"pageinfo\\">共 <strong>%totalRow%</strong> %header% <strong>%nowPage%/%totalPage%</strong>页</span></li></ul>'),
 (4, '图片模型', 'Photo', 12, '条数据', '上一页', '下一页', '首页', '末页', '<ul><li>%first%</li><li>%upPage%</li><li>%linkPage%</li><li>%downPage%</li><li>%end%</li><li><span class=\\"pageinfo\\">共 <strong>%totalRow%</strong> %header% <strong>%nowPage%/%totalPage%</strong>页</span></li></ul>'),
@@ -3247,7 +3258,7 @@ CREATE TABLE IF NOT EXISTS `bh_node` (
   KEY `pid` (`pid`),
   KEY `status` (`status`),
   KEY `name` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=186 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=187 ;
 
 --
 -- 转存表中的数据 `bh_node`
@@ -3289,7 +3300,7 @@ INSERT INTO `bh_node` (`id`, `name`, `title`, `status`, `remark`, `sort`, `pid`,
 (100, '', NULL, -1, NULL, 0, 0, 1, 0),
 (101, 'Download', '下载管理', -1, NULL, 1, 87, 2, 0),
 (102, 'Pic', '图片管理', -1, NULL, 2, 87, 2, 0),
-(103, 'Category', '栏目管理', 1, '', 5, 89, 2, 0),
+(103, 'Category', '分类管理', 1, '', 5, 89, 2, 0),
 (104, 'Message', '留言管理', 1, '', 0, 88, 2, 0),
 (105, 'Databack', '数据备份', 1, '', 13, 89, 2, 0),
 (106, 'Datarecover', '数据恢复', 1, '', 15, 89, 2, 0),
@@ -3297,10 +3308,10 @@ INSERT INTO `bh_node` (`id`, `name`, `title`, `status`, `remark`, `sort`, `pid`,
 (108, 'Other', '扩展功能', 1, '', 9, 88, 2, 0),
 (109, 'Sitemap', 'sitemap', 1, '', 5, 88, 2, 0),
 (110, 'Tag', '基本标签', -1, '', 8, 89, 2, 0),
-(111, 'App', '手机APP', 1, '', 3, 0, 1, 0),
+(111, 'App', '手机APP', 0, '', 3, 0, 1, 0),
 (112, 'Appmodel', 'APP模板设置', 1, '', 0, 111, 2, 0),
 (113, 'Appcreate', 'APP生成下载', 1, '', 1, 111, 2, 0),
-(114, 'Pageset', '分页设置', 1, '', 10, 89, 2, 0),
+(114, 'Pageset', '模型分页设置', 1, '', 10, 89, 2, 0),
 (182, 'add', '添加', 1, NULL, 0, 178, 3, 0),
 (116, 'Annex', '附件管理', 1, '', 10, 89, 2, 0),
 (117, 'Member', '会员管理', 1, '', 11, 88, 2, 0),
@@ -3332,7 +3343,7 @@ INSERT INTO `bh_node` (`id`, `name`, `title`, `status`, `remark`, `sort`, `pid`,
 (143, 'index', '列表', 1, NULL, 0, 117, 3, 0),
 (144, 'edit', '修改', 1, NULL, 0, 117, 3, 0),
 (145, 'foreverdelete', '删除', 1, NULL, 0, 117, 3, 0),
-(146, 'add', '添加', 1, NULL, 0, 118, 3, 0),
+(146, 'add', '添加', 0, '', 0, 118, 3, 0),
 (147, 'index', '列表', 1, NULL, 0, 118, 3, 0),
 (148, 'edit', '修改', 1, NULL, 0, 118, 3, 0),
 (149, 'foreverdelete', '删除', 1, NULL, 0, 118, 3, 0),
@@ -3430,17 +3441,14 @@ CREATE TABLE IF NOT EXISTS `bh_other` (
 --
 
 INSERT INTO `bh_other` (`id`, `setname`, `settag`, `setvalue`, `setexplain`) VALUES
-(1, 'CNZZ流量统计', 'cnzzstatistics', '', ''),
-(3, '51啦流量统计', 'lastatistics', '', ''),
 (4, '迷你简介', 'mini_intro', '<img src="media/images/mini_intro.jpg" width="120" height="130" />\r\n<p>南京市高淳区百货大厦有限公司就位于高淳区商业主街道――通贤街现代文明示范街，前身是高淳百货一店，创建于1962年。2000年企业改制后，百货大厦....</p>', ''),
-(5, '加为收藏', 'collect', '<a href="javascript:window.external.AddFavorite(''http://www.yufu5.com'',''鱼福网'')"><img src="/yufucms_qy/Apps/Tpl/default/Public/images/jrsc.jpg"></a>', ''),
-(6, '设为首页', 'homepage', '<a href=" " onclick="this.style.behavior=''url(#default#homepage)'';this.setHomePage(''http://www.yufu5.com'');"><img src="/yufucms_qy/Apps/Tpl/default/Public/images/swsy.jpg" /></a>', ''),
+(5, '加为收藏', 'collect', '<a href="javascript:;" onclick="setCollect(''高淳百货大楼'',''http://www.gcbhdl.com'')">加入收藏</a>', ''),
+(6, '设为首页', 'homepage', '<a href="javascript:;"onclick="setHome(this,''http://www.gcbhdl.com'');">设为首页</a>', ''),
 (9, '网站底部版权信息等', 'footer', '<div class="foot mart10">\r\n    	<span class="logo3"></span>\r\n        <div class="foot-news">\r\n        地址：江苏省南京市高淳区淳溪镇通贤街21号<br />邮编：211300       咨询热线：025-57324358<br />苏ICP备：05066028号  copyright 2010  版权所有：南京市高淳区高淳百货大厦有限公司\r\n        </div>\r\n    </div>', ''),
 (8, '全国统一服务热线', 'lxdh', '<span style="padding-bottom:10px;">全国统一服务热线：</span><span style="color:red;font-size:25px;font-weight: bold">400-888-8888</span>', ''),
 (10, '手机版二维码', 'appclient', '<a href="index.php?m=content&a=index&id=48" target="_blank"><img src="./Uploads/qrcode.png" /></a>', ''),
-(11, '百度分享插件', 'bdshare', '<!-- Baidu Button BEGIN -->\r\n<script type="text/javascript" id="bdshare_js" data="type=slide&amp;img=2&amp;pos=left&amp;uid=6598355" ></script>\r\n<script type="text/javascript" id="bdshell_js"></script>\r\n<script type="text/javascript">\r\ndocument.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);\r\n</script>\r\n<!-- Baidu Button END -->', ''),
-(17, '售后客服QQ', 'qq2', '<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=315231371&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:315231371:41 &r=0.3571578827686608" alt="点击这里给我发消息" title="点击这里给我发消息"></a>', ''),
-(18, '售前咨询QQ', 'qq1', '<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=315231371&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:315231371:41 &r=0.3571578827686608" alt="点击这里给我发消息" title="点击这里给我发消息"></a>', ''),
+(11, '百度分享插件', 'bdshare', '<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>\r\n<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName(''head'')[0]||body).appendChild(createElement(''script'')).src=''http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=''+~(-new Date()/36e5)];</script>', ''),
+(17, '售后客服QQ', 'qq2', '<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=997572335&site=qq&menu=yes"><img src="http://www.sunkf.net/codes/one/images/q_1.gif" border="0" alt="点击咨询" title="点击咨询"></a>', ''),
 (19, '滚动厂商logo', 'manufacturer_slider', '<ul id="demo1" class="sroll">\r\n                        <li><a href="#"><img src="media/images/logo1.jpg" width="191" /></a></li>\r\n                        <li><a href="#"><img src="media/images/logo2.jpg" width="191" /></a></li>\r\n                        <li><a href="#"><img src="media/images/logo1.jpg" width="191" /></a></li>\r\n                        <li><a href="#"><img src="media/images/logo2.jpg" width="191" /></a></li>\r\n                        <li><a href="#"><img src="media/images/logo1.jpg" width="191" /></a></li>\r\n                        <li><a href="#"><img src="media/images/logo2.jpg" width="191" /></a></li>\r\n                        <li><a href="#"><img src="media/images/logo1.jpg" width="191" /></a></li>\r\n                        <li><a href="#"><img src="media/images/logo2.jpg" width="191" /></a></li>\r\n                        <li><a href="#"><img src="media/images/logo1.jpg" width="191" /></a></li>\r\n                        <li><a href="#"><img src="media/images/logo2.jpg" width="191" /></a></li>\r\n                    </ul>\r\n                    <ul id="demo2"></ul>\r\n                    <script>\r\n                      var speed=30\r\n                      demo2.innerHTML=demo1.innerHTML\r\n                      function Marquee(){\r\n                      if(demo2.offsetWidth-demo.scrollLeft<=0)\r\n                      demo.scrollLeft-=demo1.offsetWidth\r\n                      else{\r\n                      demo.scrollLeft++\r\n                      }\r\n                      }\r\n                      var MyMar=setInterval(Marquee,speed)\r\n                      demo.onmouseover=function() {clearInterval(MyMar)}\r\n                      demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)}\r\n                      </script>', ''),
 (20, '楼层导购', 'shopping_guide', '<ul class="boxnav-ul">\r\n                    <li><i></i>1F：黄金 珠宝 化妆品 鞋类</li>\r\n                    <li><i></i>2F：女装</li>\r\n                    <li><i></i>3F：男装</li>\r\n                    <li><i></i>4F：运动休闲</li>\r\n                    <li><i></i>5F：童装 羊绒 毛衫 内衣 床上用品 羽绒服 </li>\r\n                </ul>', '');
 
@@ -3475,14 +3483,7 @@ CREATE TABLE IF NOT EXISTS `bh_photo` (
   `photo_url4` varchar(255) DEFAULT NULL,
   `photo_url5` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
-
---
--- 转存表中的数据 `bh_photo`
---
-
-INSERT INTO `bh_photo` (`id`, `catid`, `title`, `thumb`, `keywords`, `description`, `url`, `content`, `listorder`, `create_time`, `update_time`, `status`, `hits`, `photo1`, `photo2`, `photo3`, `photo4`, `photo5`, `photo_url1`, `photo_url2`, `photo_url3`, `photo_url4`, `photo_url5`) VALUES
-(7, 44, '经典案例1', '/2013/07/20/51ea67302a049.jpg', '', NULL, NULL, '<p style="text-indent:2em;">经过绵阳合作伙伴与总公司王经理的充分配合与协调下，经过2周时间对“绵阳耳鼻喉医院”成功实施了《千业医院管理系统》，顺利进行了安装、调试、二次开发及培训工作。</p><p><br /></p><p style="text-indent:2em;">绵阳耳鼻喉医院是一家重点专科医院，此次千业HIS系统的成功实施，标志着《千业医院管理系统》由原来致力于综合性医院信息化解决方案提供者向具备极具专业性医院系统使用的融合。</p><p><br /></p>', NULL, 1374316336, NULL, 1, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -3506,16 +3507,7 @@ CREATE TABLE IF NOT EXISTS `bh_product` (
   `status` tinyint(1) DEFAULT NULL,
   `hits` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
-
---
--- 转存表中的数据 `bh_product`
---
-
-INSERT INTO `bh_product` (`id`, `catid`, `title`, `thumb`, `price`, `guige`, `description`, `url`, `content`, `listorder`, `create_time`, `update_time`, `status`, `hits`) VALUES
-(21, 41, '产品名称1', '/2013/07/20/51ea4db94474c.jpg', 1880.00, '', NULL, NULL, '<p style="text-indent:2em;">千业医院管理系统是根据卫生部《医院信息系统功能规范》而研发设计，围绕三大业务中心（医疗管理中心、经济中心和管理决策中心），产品全面覆盖医院管理的各个业务层面和环节，合理组织医院管理流程，提高工作效率，提升对病人的服务质量。是专门针对大中小型医院、乡镇卫生院和个体诊所而量身定做的信息化管理系统。<br /></p><p style="text-indent:2em;">产品分为两个大类：千业医院管理信息系统V3.0和千业门诊管理系统。安装简单，操作方便，人性化设计，公司在强调数据安全性的同时，秉承“一看就懂，一学就会”的开发理念，强调软件的实用性和易用性的完美结合。五年以来，千业科技为数百家医院进行了成功的信息化实施，产品都保持了非常好的稳定性。<br /></p><p style="text-indent:0em;"><br /></p><p style="text-indent:0em;">千业医院管理系统的主要功能模块：<br /></p><ol style="list-style-type:decimal;"><li><p>门诊收费子系统：门诊划价收费子系统 、门诊收费 </p></li><li><p>住院管理子系统：入/出院管理子系统、住院收费子系统、病床管理子系统</p></li><li><p>药库管理子系统：药品管理子系统</p></li><li><p>药房管理子系统：处方管理子系统、药品管理子系统</p></li><li><p>病案管理子系统：病案档案管理子系统、手术信息管理子系统、病案统计子系统</p></li><li><p>财务监管子系统：收费员发票管理子系统、收费员结帐子系统、查询统计子系统</p></li><li><p>院长查询子系统：院长查询系统</p></li><li><p>社保接口子系统：与当地社保系统的数据接口</p></li><li><p>系统设置子系统：系统设置子系统</p></li><li><p>医生工作站子系统：门诊医生子系统、住院医生子系统。</p></li><li><p>护士工作站子系统：护士工作站管理</p></li><li><p>物资库房管理系统：物资库房的管理 </p></li></ol><p style="text-indent:0em;"><br /></p>', 0, 1365566192, 1374309817, 1, 5),
-(22, 42, '产品名称2', '/2013/07/20/51ea4e3506c19.jpg', 1880.00, '', NULL, NULL, '<p style="text-indent:2em;">千业医院管理系统是根据卫生部《医院信息系统功能规范》而研发设计，围绕三大业务中心（医疗管理中心、经济中心和管理决策中心），产品全面覆盖医院管理的各个业务层面和环节，合理组织医院管理流程，提高工作效率，提升对病人的服务质量。是专门针对大中小型医院、乡镇卫生院和个体诊所而量身定做的信息化管理系统。</p><p><br /></p><p style="text-indent:2em;">产品分为两个大类：千业医院管理信息系统V3.0和千业门诊管理系统。安装简单，操作方便，人性化设计，公司在强调数据安全性的同时，秉承“一看就懂，一学就会”的开发理念，强调软件的实用性和易用性的完美结合。五年以来，千业科技为数百家医院进行了成功的信息化实施，产品都保持了非常好的稳定性。</p><p><br /></p><p>千业医院管理系统的主要功能模块：</p><ol style="list-style-type:decimal;"><li><p>门诊收费子系统：门诊划价收费子系统 、门诊收费 </p></li><li><p>住院管理子系统：入/出院管理子系统、住院收费子系统、病床管理子系统</p></li><li><p>药库管理子系统：药品管理子系统</p></li><li><p>药房管理子系统：处方管理子系统、药品管理子系统</p></li><li><p>病案管理子系统：病案档案管理子系统、手术信息管理子系统、病案统计子系统</p></li><li><p>财务监管子系统：收费员发票管理子系统、收费员结帐子系统、查询统计子系统</p></li><li><p>院长查询子系统：院长查询系统</p></li><li><p>社保接口子系统：与当地社保系统的数据接口</p></li><li><p>系统设置子系统：系统设置子系统</p></li><li><p>医生工作站子系统：门诊医生子系统、住院医生子系统。</p></li><li><p>护士工作站子系统：护士工作站管理</p></li><li><p>物资库房管理系统：物资库房的管理 </p></li></ol><p><br /></p>', 0, 1374309941, NULL, 1, 4),
-(23, 43, '产品名称3', '/2013/07/20/51ea509dc6b03.jpg', 1880.00, '', NULL, NULL, '<p style="text-indent:2em;">千业医院管理系统是根据卫生部《医院信息系统功能规范》而研发设计，围绕三大业务中心（医疗管理中心、经济中心和管理决策中心），产品全面覆盖医院管理的各个业务层面和环节，合理组织医院管理流程，提高工作效率，提升对病人的服务质量。是专门针对大中小型医院、乡镇卫生院和个体诊所而量身定做的信息化管理系统。</p><p><br /></p><p style="text-indent:2em;">产品分为两个大类：千业医院管理信息系统V3.0和千业门诊管理系统。安装简单，操作方便，人性化设计，公司在强调数据安全性的同时，秉承“一看就懂，一学就会”的开发理念，强调软件的实用性和易用性的完美结合。五年以来，千业科技为数百家医院进行了成功的信息化实施，产品都保持了非常好的稳定性。</p><p><br /></p><p>千业医院管理系统的主要功能模块：</p><ol style="list-style-type:decimal;"><li><p>门诊收费子系统：门诊划价收费子系统 、门诊收费 </p></li><li><p>住院管理子系统：入/出院管理子系统、住院收费子系统、病床管理子系统</p></li><li><p>药库管理子系统：药品管理子系统</p></li><li><p>药房管理子系统：处方管理子系统、药品管理子系统</p></li><li><p>病案管理子系统：病案档案管理子系统、手术信息管理子系统、病案统计子系统</p></li><li><p>财务监管子系统：收费员发票管理子系统、收费员结帐子系统、查询统计子系统</p></li><li><p>院长查询子系统：院长查询系统</p></li><li><p>社保接口子系统：与当地社保系统的数据接口</p></li><li><p>系统设置子系统：系统设置子系统</p></li><li><p>医生工作站子系统：门诊医生子系统、住院医生子系统。</p></li><li><p>护士工作站子系统：护士工作站管理</p></li><li><p>物资库房管理系统：物资库房的管理 </p></li></ol><p><br /></p>', 0, 1374310557, NULL, 1, 11);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -3563,7 +3555,7 @@ CREATE TABLE IF NOT EXISTS `bh_set` (
 --
 
 INSERT INTO `bh_set` (`id`, `errorcount`, `errorinterval`, `messageinterval`, `verifykey`, `verifyurl`, `logo`) VALUES
-(21, 5, 300, 60, NULL, NULL, '/2014/03/30/53379977de300.png');
+(21, 0, 300, 60, NULL, NULL, '/2014/03/30/53379977de300.png');
 
 -- --------------------------------------------------------
 
@@ -3616,14 +3608,16 @@ CREATE TABLE IF NOT EXISTS `bh_tjdate` (
   `create_date` int(11) DEFAULT NULL,
   `create_num` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- 转存表中的数据 `bh_tjdate`
 --
 
 INSERT INTO `bh_tjdate` (`id`, `create_date`, `create_num`) VALUES
-(1, 20140330, 127);
+(1, 20140402, 22),
+(2, 20140403, 110),
+(3, 20140404, 29);
 
 -- --------------------------------------------------------
 
@@ -3636,31 +3630,37 @@ CREATE TABLE IF NOT EXISTS `bh_tjurl` (
   `create_url` varchar(255) DEFAULT NULL,
   `create_num` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- 转存表中的数据 `bh_tjurl`
 --
 
 INSERT INTO `bh_tjurl` (`id`, `create_url`, `create_num`) VALUES
-(1, '/', 3),
-(2, '/index.php?m=content&a=index&id=48', 11),
-(3, '/index.php', 52),
-(4, '/index.php?m=article&a=index&id=12', 6),
-(5, '/index.php?m=content&a=index&id=27', 6),
-(6, '/index.php?m=content&a=index&id=37', 24),
-(7, '/index.php?m=article&a=index&id=37', 1),
-(8, '/index.php?m=content&a=index&id=12', 2),
-(9, '/index.php?m=article&a=index&id=1', 3),
-(10, '/index.php?m=content&a=index&id=36', 1),
-(11, '/index.php?m=content&a=index&id=44', 1),
-(12, '/index.php?m=content&a=index&id=45', 1),
-(13, '/index.php?m=article&a=index&id=44', 1),
-(14, '/index.php?m=article&a=show&id=21', 2),
-(15, '/index.php?m=product&a=index&id=38', 3),
-(16, '/index.php?m=product&a=index&id=39', 1),
-(17, '/index.php?m=content&a=index&id=38', 8),
-(18, '/index.php?m=product&a=index&id=37', 1);
+(1, '/index.php?m=content&a=index&id=92', 11),
+(2, '/index.php?m=content&a=index&id=93', 3),
+(3, '/index.php?m=content&a=index&id=87', 5),
+(4, '/index.php?m=article&a=index&id=88', 21),
+(5, '/', 4),
+(6, '/index.php?m=content&a=index&id=89', 4),
+(7, '/index.php?m=content&a=index&id=90', 6),
+(8, '/index.php?m=content&a=index&id=91', 2),
+(9, '/index.php?m=content&a=index&id=91&noleft=1', 10),
+(10, '/index.php', 4),
+(11, '/index.php?m=article&a=index&id=86', 16),
+(12, '/index.php?m=article&a=show&id=25', 12),
+(13, '/index.php?m=article&a=show&id=14', 10),
+(14, '/index.php?m=article&a=show&id=13', 1),
+(15, '/index.php?m=article&a=index&id=86&p=2', 4),
+(16, '/index.php?m=article&a=index&id=86&p=1', 2),
+(17, '/index.php?m=article&a=show&id=35', 1),
+(18, '/index.php?m=article&a=show&id=32', 21),
+(19, '/index.php?m=article&a=show&id=31', 1),
+(20, '/index.php?m=article&a=show&id=33', 6),
+(21, '/index.php?m=announce&a=show&id=10', 6),
+(22, '/index.php?m=announce&a=index', 9),
+(23, '/index.php?m=article&a=index&id=92', 1),
+(24, '/index.php?m=content&a=index&id=95', 1);
 
 -- --------------------------------------------------------
 
@@ -3693,8 +3693,4 @@ CREATE TABLE IF NOT EXISTS `bh_user` (
 --
 
 INSERT INTO `bh_user` (`id`, `account`, `nickname`, `password`, `last_login_time`, `last_login_ip`, `login_count`, `error_count`, `error_login_time`, `email`, `remark`, `create_time`, `update_time`, `status`, `role_id`) VALUES
-(1, 'admin', '超级管理员', 'b1c21019afd435194216c87f414e6cce', 1396152643, '127.0.0.1', 1, 0, NULL, '', '', 1396152614, 0, 1, 0);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+(1, 'admin', '超级管理员', 'b1c21019afd435194216c87f414e6cce', 1396577479, '127.0.0.1', 9, 0, 1396250373, '', '', 1396152614, 0, 1, 0);
