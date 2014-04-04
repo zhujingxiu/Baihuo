@@ -3,16 +3,15 @@
 	    <div class="qyjj mart10 clearfix">
 		    <include file="Public:left" />
 	        <div class="rightbox">
-	        	<div class="content">
-	            	<div class="navwz">您当前位置:  <a href="__APP__">首页</a><em>&gt;</em>{$data.catname}</div>
+	        	
+	            <div class="navwz">您当前位置:  <a href="__APP__">首页</a><em>&gt;</em>最新公告</div>
 	                
-	                <ul class="newslist">
+	            <div class="cx-box clearfix">
+	            	<ul style="padding:10px;">
 	                    <volist name="list" id="vo">
-	                   	<li>
-	                   		<a href="{:U('Article/show',array('id'=>$vo['id']))}" target="_blank">
-	                   			
-	                   			<span>{$vo.title|msubstr=0,25}</span>
-	                   			
+	                   	<li><em class="time">{$vo.create_time|toDate="Y-m-d"}</em>
+	                   		<a href="{:U('Announce/show',array('id'=>$vo['id']))}" target="_blank">
+	                   			<span>{$vo.title|msubstr=0,25}</span>	                   			
 	                   		</a>
 	                   	</li>
 	                    </volist>

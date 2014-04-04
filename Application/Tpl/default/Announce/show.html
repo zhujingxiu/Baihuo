@@ -1,29 +1,21 @@
 <include file="Public:header" />
     <div class="section">
-    	<include file="Public:left" />
-        <div class="rightbox">
-            <div class="navwz">您当前位置:  <a href="__APP__">首页</a><em>&gt;</em>
-                <notempty name="data.category">
-                <a href="{$data.category.url}">{$data.category.catname}</a><em>&gt;</em>
-                </notempty>
-                {$data.title}
-            </div>
-        	<div class="content">
-            	<div class="content_top">官方公告</div>
-                <div class="content_news">
-                	<div class="title">
-                    	<h2>{$data.title}</h2>
-                        <div class="info"><span>发布时间：{$data.create_time|toDate='Y-m-d'}</span><span></span></div>
-                    </div>
-                    <div class="clear"></div>
-                    <div class="disdoc">
-                    	{$data.content}
-                    </div>
-                    
+        <div class="qyjj mart10 clearfix">
+    	    <include file="Public:left" />
+            <div class="rightbox">
+                <div class="navwz">您当前位置:  <a href="__APP__">首页</a><em>&gt;</em>                    
+                    <a href="{:U('Announce/index')}">最新公告</a><em>&gt;</em>                    
+                    {$data.title}
                 </div>
-               
+                <div class="title">
+                    <h1>{$data.title}</h1>
+                    <div class="info"><span>发布时间：{$data.create_time|toDate='Y-m-d'}</span><span></span></div>
+                </div>
+                <div class="clear"></div>
+            	<div class="news">
+                    {$data.content}                   
+                </div>
             </div>
-           
         </div>
     </div>
 <include file="Public:footer" />

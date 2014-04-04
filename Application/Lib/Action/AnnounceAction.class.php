@@ -12,7 +12,7 @@ class AnnounceAction extends CommonAction{
 	        import("@.ORG.Page");       //导入分页类
 	        $count  = $Form->where($map)->count();    //计算总数
 	        $Page = new Page($count, $pageinfo['listrows'],'','','a','on');
-	        $list   = $Form->where($map)->limit($Page->firstRow. ',' . $Page->listRows)->order('create_time,id desc')->select();
+	        $list   = $Form->where($map)->limit($Page->firstRow. ',' . $Page->listRows)->order('starttime desc,id desc')->select();
 
 	        // 设置分页显示
 	        $Page->setConfig('header', $pageinfo['header']);
@@ -23,8 +23,8 @@ class AnnounceAction extends CommonAction{
 	        $Page->setConfig('theme',$pageinfo['theme']);
 	        $page = $Page->show();
 	        
-	        $this->seo(C("SITE_NAME"), C("SITE_KEYWORDS"), C("SITE_DESCRIPTION"), '');
-	        $this->assign("data", $catdata);
+	        $this->seo('最新公告 - '.C("SITE_NAME"), C("SITE_KEYWORDS"), C("SITE_DESCRIPTION"), '');
+	        
 	        $this->assign("page", $page);
 	        $this->assign("list", $list);
 	        $this->display(); 
