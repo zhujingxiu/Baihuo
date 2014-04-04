@@ -7,7 +7,6 @@
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
-// |         lanfengye <zibin_5257@163.com>
 // +----------------------------------------------------------------------
 
 class Page {
@@ -39,6 +38,9 @@ class Page {
     // 默认分页变量名
     protected $varPage;
 
+    protected $currentPageClass;
+    protected $currentPageHtmlTag;
+
     /**
      * 架构函数
      * @access public
@@ -46,7 +48,7 @@ class Page {
      * @param array $listRows  每页显示记录数
      * @param array $parameter  分页跳转的参数
      */
-    public function __construct($totalRows,$listRows='',$parameter='',$url='') {
+    public function __construct($totalRows,$listRows='',$parameter='',$url='',$currentPageHtmlTag='span',$currentPageClass='current') {
         $this->totalRows    =   $totalRows;
         $this->parameter    =   $parameter;
         $this->varPage      =   C('VAR_PAGE') ? C('VAR_PAGE') : 'p' ;
@@ -59,6 +61,8 @@ class Page {
             $this->nowPage  =   $this->totalPages;
         }
         $this->firstRow     =   $this->listRows*($this->nowPage-1);
+        $this->currentPageClass = $currentPageClass;
+        $this->currentPageHtmlTag = $currentPageHtmlTag;
     }
 
     public function setConfig($name,$value) {
@@ -144,7 +148,7 @@ class Page {
                 if ($page != $this->nowPage) {
                     $linkPage .= " <a href='".str_replace('__PAGE__',$page,$url)."'>".$page."</a>";
                 } else {
-                    $linkPage .= " <span class='current'>".$page."</span>";
+                    $linkPage .= " <".$this->currentPageHtmlTag." class='".$this->currentPageClass."'>".$page."</".$this->currentPageHtmlTag.">";
                 }
             }
         }
@@ -231,7 +235,7 @@ class Page {
                 if ($page != $this->nowPage) {
                     $linkPage .= " <a href='".str_replace('__PAGE__',$page,$url)."'>&nbsp;".$page."&nbsp;</a>";
                 } else {
-                    $linkPage .= " <span class='current'>".$page."</span>";
+                    $linkPage .= " <".$this->currentPageHtmlTag." class='".$this->currentPageClass."'>".$page."</".$this->currentPageHtmlTag.">";
                 }
             }
         }

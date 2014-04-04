@@ -134,3 +134,6 @@ position:relative;}
 .page a.on { background:#bfbfbf; color:#111;}
 .cpdetail { width:640px; overflow:hidden; text-align:center;}
 .cpdetail h2 { font-size:16px; color:#fff; line-height:35px; padding-bottom:20px;}
+
+.title h1{font-size:28px;padding: 8px 0 20px;text-align:center;}
+.title .info{float:right;clear:both;color: #777;line-height: 22px;}

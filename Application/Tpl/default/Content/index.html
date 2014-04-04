@@ -1,9 +1,11 @@
 <include file="Public:header" />
     <div class="section">
-        <include file="Public:left" />
-        <div class="rightbox">
-            <div class="navwz">您当前位置:  <a href="#">首页</a><em>&gt;</em>{$data.catname}</div>
-            {$data.content}
+        <div class="qyjj mart10 clearfix">
+            <include file="Public:left" />
+            <div <if condition="I('noleft') neq 1">class="rightbox"<else />class="our clearfix mart10"</if>>
+                <div class="navwz">您当前位置:  <a href="__APP__">首页</a><em>&gt;</em>{$data.catname}</div>
+                {$data.content}
+            </div>
         </div>
     </div>
 <include file="Public:footer" />

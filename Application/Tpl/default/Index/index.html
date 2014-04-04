@@ -55,7 +55,7 @@
                 
             </div>
             <div class="zx-dt">
-                <h3><a href="#" class="more">[更多]</a>最新动态</h3>
+                <h3><a href="{:U('Announce/index')}" class="more">[更多]</a>最新动态</h3>
                  <ul class="dx">                   
                     <view_block:announce field="id,title,create_time" order="create_time desc" num="5" >
                     <li><em class="time">{$announce.create_time|toDate="Y-m-d"}</em><a href="{:U('Announce/show',array('id'=>$announce['id']))}" target="_blank">{$announce.title|msubstr=0,25}</a></li>

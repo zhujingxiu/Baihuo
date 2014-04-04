@@ -10,13 +10,10 @@
 	                    <volist name="list" id="vo">
 	                   	<li>
 	                   		<a href="{:U('Article/show',array('id'=>$vo['id']))}" target="_blank">
-	                   			<img class="newspic" src="__UPLOADS__{$vo.thumb}" width="180" height="114" />
-	                   			<p class="newstitle">{$vo.title|msubstr=0,25}</p>
+	                   			
+	                   			<span>{$vo.title|msubstr=0,25}</span>
 	                   			
 	                   		</a>
-	                   		<p class="newsd">{$vo.content|strip_tags|msubstr=0,80}</p>
-	                   		
-	                   		<a href="{:U('Article/show',array('id'=>$vo['id']))}" class="newslist-more"><img src="../Public/images/xq.png" /></a>
 	                   	</li>
 	                    </volist>
 	                </ul>

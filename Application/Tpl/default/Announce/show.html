@@ -1,9 +1,13 @@
 <include file="Public:header" />
-    <div id="main">
-    	<div class="main_left">
-            <include file="Public:left" />
-        </div>
-        <div class="main_right">
+    <div class="section">
+    	<include file="Public:left" />
+        <div class="rightbox">
+            <div class="navwz">您当前位置:  <a href="__APP__">首页</a><em>&gt;</em>
+                <notempty name="data.category">
+                <a href="{$data.category.url}">{$data.category.catname}</a><em>&gt;</em>
+                </notempty>
+                {$data.title}
+            </div>
         	<div class="content">
             	<div class="content_top">官方公告</div>
                 <div class="content_news">

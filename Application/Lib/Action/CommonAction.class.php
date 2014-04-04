@@ -56,7 +56,7 @@ class CommonAction extends Action {
     }
    
     //SEO赋值
-    public function seo($title,$keywords,$description,$positioin){
+    public function seo($title,$keywords,$description,$positioin=''){
     	$this->assign('title',$title);
     	$this->assign('keywords',$keywords);
     	$this->assign('description',$description);
@@ -67,7 +67,12 @@ class CommonAction extends Action {
     public function changurl($ary){
     	if(is_array($ary)){
             if(key_exists('modelname', $ary)){
-                $ary['url']=U($ary['modelname'].'/index/',array('id'=>$ary['id']));
+                if(!empty($ary['custom_url'])){
+                    $ary['url'] = trim($ary['custom_url']);
+                }else{
+                    $ary['url']=U($ary['modelname'].'/index/',array('id'=>$ary['id'])).(!empty($ary['params']) ? trim($ary['params']) : '');    
+                }
+                
             }
             return $ary;
         }		
@@ -94,11 +99,10 @@ class CommonAction extends Action {
         $Model=M('Model');
         $map['table']=array('eq',$name);
         $pageinfo=$Model->where($map)->find();
-
         $Form   =   M($name);
         import("@.ORG.Page");       //导入分页类
         $count  = $Form->where($map)->count();    //计算总数
-        $Page = new Page($count, $pageinfo['listrows']);
+        $Page = new Page($count, $pageinfo['listrows'],'','','a','on');
         $list   = $Form->where($map)->limit($Page->firstRow. ',' . $Page->listRows)->order('listorder,id desc')->select();
 
         // 设置分页显示
@@ -133,12 +137,15 @@ class CommonAction extends Action {
 
         //当前记录
         $data=$model->find($id);
+        if(!empty($data['catid'])){
+            $data['category'] = $this->changurl(M('category')->find($data['catid']));
+        }
         
         //上一条记录
-        $prevdata=$model->where('id<'.$id)->order('id desc')->limit('1')->find();
+        $prevdata=$model->where(" id < '".$id."' AND catid = '".$data['catid']."' ")->order('id desc')->limit('1')->find();
         
         //下一条记录
-        $nextdata=$model->where('id>'.$id)->order('id asc')->limit('1')->find();
+        $nextdata=$model->where(" id > '".$id."' AND catid = '".$data['catid']."' ")->order('id asc')->limit('1')->find();
         
         //seo设置
         $position=D('Common')->getPosition($data['catid']);
