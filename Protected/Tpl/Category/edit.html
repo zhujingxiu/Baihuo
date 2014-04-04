@@ -101,6 +101,14 @@
                         <span class="fontcolor" style="width: 260px; float: left;">meta description（分类描述）针对搜索引擎设置的网页描述</span>
                     </dd>
                 </dl>
+                <dl>
+                    <dt>左侧板：</dt>
+                    <dd>
+                        <volist name="cates" id="c">
+                            <div><input type="checkbox" name="leftset[]" value="{$c.id}"/> {$c.catname} </div>
+                        </volist>
+                    </dd>
+                </dl>
                 </div>
                 <div class="form_b">
                     

@@ -13,7 +13,9 @@ class CategoryAction extends CommonAction{
         }
         
         $cate=new CategoryModel();
+
         $menu =$cate->getMyCategory1(); //加载分类
+
         $menu = arrToMenu($menu,0);  
         $this->list=$menu;
         Cookie::set('_currentUrl_', __SELF__);
@@ -44,6 +46,22 @@ class CategoryAction extends CommonAction{
         $this->list=$menu;
         $this->mdldata=$cate->getMyModel();//加载模型
         
+    }
+    public function add() {
+        $cates =M('category')->where("level = 1 AND modelname = 'Article' AND status = 1")->order('listorder ,id ')->select(); //加载分类
+        $this->assign('cates', $cates);
+
+        $this->display();
+    }
+    function edit() {
+        $cates =M('category')->where("level = 1 AND modelname = 'Article' AND status = 1")->order('listorder ,id ')->select(); //加载分类
+        $this->assign('cates', $cates);
+        $name = $this->getActionName();
+        $model = M($name);
+        $id = $_REQUEST [$model->getPk()];
+        $vo = $model->getById($id);
+        $this->assign('vo', $vo);
+        $this->display();
     }
     function insert() {
         $this->_upload();

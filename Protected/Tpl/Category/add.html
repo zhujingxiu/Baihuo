@@ -53,13 +53,13 @@
                 <dl>
                     <dt> 附加参数：</dt>
                     <dd>
-                        <input type="text" class="ipt1" name="params" value='' />
+                        <input type="text" class="ipt6" name="params" value='' />
                     </dd>
                 </dl>
                 <dl>
                     <dt> 自定义URL：</dt>
                     <dd>
-                        <input type="text" class="ipt1" name="custom_url" value='' />
+                        <input type="text" class="ipt8" name="custom_url" value='' />
                     </dd>
                 </dl>
 
@@ -99,9 +99,18 @@
                         <span class="fontcolor" style="width: 260px; float: left;">meta description（分类描述）针对搜索引擎设置的网页描述</span>
                     </dd>
                 </dl>
+                <dl>
+                    <dt>左侧板：</dt>
+                    <dd>
+                        <volist name="cates" id="c">
+                            <div><input type="checkbox" name="leftset" value="{$c.id}"/> {$c.catname} </div>
+                        </volist>
+                    </dd>
+                </dl>
+
                 </div>
+
                 <div class="form_b">
-                    
                     <input type="submit" class="submit btn7" id="submit" value="提 交">
                 </div>
                </form>

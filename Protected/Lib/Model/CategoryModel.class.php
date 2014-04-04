@@ -22,7 +22,7 @@ class CategoryModel extends CommonModel {
         return $data;
     }
     
-    //获取栏目菜单
+    //获取分类菜单
     public function getMyCategory(){
         $map['status']  = array('egt',0);
         $cat=D('Category');
@@ -34,7 +34,7 @@ class CategoryModel extends CommonModel {
 
         return $list;
     }
-    //获取栏目菜单
+    //获取分类菜单
     public function getMyCategory1() {
         //读取数据库模块列表生成菜单项   
         $node = D ( "Category" );  
