@@ -124,7 +124,11 @@ class CommonAction extends Action {
         $this->assign("data", $catdata);
         $this->assign("page", $page);
         $this->assign("list", $list);
-        $this->display(); 
+        if(!empty($catdata['list_tpl'])){
+            $this->display($catdata['list_tpl']); 
+        }else{
+            $this->display();   
+        }
     }
     public function show()
     {
@@ -164,7 +168,11 @@ class CommonAction extends Action {
         $this->nextdata=$nextdata;
         //Cookie::set('_currentUrl_', __SELF__);
         session('_currentUrl_', __SELF__);
-        $this->display(); 
+        if(!empty($data['category']['detail_tpl'])){
+            $this->display($data['category']['detail_tpl']); 
+        }else{
+            $this->display();   
+        }
     }
     
     

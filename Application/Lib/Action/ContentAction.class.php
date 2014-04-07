@@ -8,8 +8,12 @@ class ContentAction extends CommonAction{
         $this->assign("data", $catdata);
         $position=D('Common')->getPosition($id);
         $this->seo(($catdata['title'])?$catdata['title']:C(SITE_TITLE), ($catdata['keywords'])?$catdata['keywords']:C(SITE_KEYWORDS), ($catdata['description'])?$catdata['description']:C(SITE_DESCRIPTION), $position);
-
-        $this->display(); 
+        if(!empty($catdata['detail_tpl'])){
+        	$this->display($catdata['detail_tpl']); 
+        }else{
+        	$this->display(); 	
+        }
+        
     }
  
 }
