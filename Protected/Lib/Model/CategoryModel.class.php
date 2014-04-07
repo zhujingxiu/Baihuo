@@ -9,6 +9,7 @@ class CategoryModel extends CommonModel {
     // 自动填充设置
     protected $_auto=array(
         array('path','tclm',3,'callback'),
+        array('leftset','format_leftset',3,'callback'),
         array('status','1',self::MODEL_INSERT)
     );
    function tclm(){
@@ -20,6 +21,18 @@ class CategoryModel extends CommonModel {
             $data=$list['path'].'-'.$list['id'];//子类的path为父类的path加上父类的id
         }
         return $data;
+    }
+
+    function format_leftset(){
+        $leftset=isset($_POST['leftset'])?$_POST['leftset']:'';
+        if(is_array($leftset) && !empty($leftset['id']) && !empty($leftset['tpl']) && !empty($leftset['lmt']) && !empty($leftset['sort'])){
+            $tmp = array();
+            foreach ($leftset['id'] as $key => $value) {
+                $tmp[] = array('id'=>$value,'tpl'=>$leftset['tpl'][$key],'lmt'=>$leftset['lmt'][$key],'sort'=>$leftset['sort'][$key]);
+            }
+            return json_encode($tmp);
+        }
+        return $leftset;
     }
     
     //获取分类菜单

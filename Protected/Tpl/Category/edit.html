@@ -1,123 +1,175 @@
 <include file="Public:header" />
 <div class="main">
-            <div class="box_tit">
-                <h2>修改分类</h2>
-            </div>
-            <div class="form_list">
-                <form method='post' id="form1" name="form1" action="{:U('Category/update')}"  enctype="multipart/form-data">
-                <div class="form_list_top">
-                <dl>
-                    <dt> 选择模型：</dt>
-                    <dd>
-                        <select name="modelname">
-                            <volist name="mdldata" id="mvo">
-                                <if condition="$mvo['table'] eq $vo['modelname']">   
-                                <option value="{$mvo['table']}" selected="selected">
-                                <else />
-                                <option value="{$mvo['table']}">
-                                </if>   
-                                {$mvo['name']}
-                                </option>
-                            </volist>
-                        </select>
-                    </dd>
-                </dl>
-                <dl>
-                    <dt> 上级分类：</dt>
-                    <dd>
-                        <select name="pid">
-                            <option value="0">≡ 作为一级分类 ≡</option>
-                            <volist name="list" id="cvo">
-                                <if condition="$cvo['id'] eq $vo['pid']">   
-                                <option value="{$cvo['id']}" selected="selected">
-                                <else />
-                                <option value="{$cvo['id']}">
-                                </if>
-                                    <for start="1" end="$cvo['level']">
-                                    &nbsp;&nbsp;
-                                    </for>
-                                    <if condition="$cvo['level'] gt 1">
-                                    ├&nbsp;
-                                    </if>
-                                    {$cvo['catname']}
-                                </option>
-                            </volist> 
-                        </select>
-                    </dd>
-                </dl>
-                <dl>
-                    <dt> 分类名称：</dt>
-                    <dd>
-                        <input type="text" class="ipt3" name="catname" value="{$vo.catname}" />
-                    </dd>
-                </dl>
-                <dl>
-                    <dt> 附加参数：</dt>
-                    <dd>
-                        <input type="text" class="ipt6" name="params" value='{$vo.params}' />
-                    </dd>
-                </dl>
-                <dl>
-                    <dt> 自定义URL：</dt>
-                    <dd>
-                        <input type="text" class="ipt8" name="custom_url" value='{$vo.custom_url}' />
-                    </dd>
-                </dl>
-                <dl>
-                    <dt> 排序值：</dt>
-                    <dd>
-                        <input type="text" class="ipt1" name="listorder" value="{$vo.listorder}" />
-                    </dd>
-                </dl>
+    <div class="box_tit">
+        <h2>修改分类</h2>
+    </div>
+    <div class="form_list">
+        <form method='post' id="form1" name="form1" action="{:U('Category/update')}"  enctype="multipart/form-data">
+        <div class="form_list_top">
+        <dl>
+            <dt> 选择模型：</dt>
+            <dd>
+                <select name="modelname">
+                    <volist name="mdldata" id="mvo">
+                        <if condition="$mvo['table'] eq $vo['modelname']">   
+                        <option value="{$mvo['table']}" selected="selected">
+                        <else />
+                        <option value="{$mvo['table']}">
+                        </if>   
+                        {$mvo['name']}
+                        </option>
+                    </volist>
+                </select>
+            </dd>
+        </dl>
+        <dl>
+            <dt> 上级分类：</dt>
+            <dd>
+                <select name="pid">
+                    <option value="0">≡ 作为一级分类 ≡</option>
+                    <volist name="list" id="cvo">
+                        <if condition="$cvo['id'] eq $vo['pid']">   
+                        <option value="{$cvo['id']}" selected="selected">
+                        <else />
+                        <option value="{$cvo['id']}">
+                        </if>
+                            <for start="1" end="$cvo['level']">
+                            &nbsp;&nbsp;
+                            </for>
+                            <if condition="$cvo['level'] gt 1">
+                            ├&nbsp;
+                            </if>
+                            {$cvo['catname']}
+                        </option>
+                    </volist> 
+                </select>
+            </dd>
+        </dl>
+        <dl>
+            <dt> 分类名称：</dt>
+            <dd>
+                <input type="text" class="ipt3" name="catname" value="{$vo.catname}" />
+            </dd>
+        </dl>
+        <dl>
+            <dt> 附加参数：</dt>
+            <dd>
+                <input type="text" class="ipt6" name="params" value='{$vo.params}' />
+            </dd>
+        </dl>
+        <dl>
+            <dt> 自定义URL：</dt>
+            <dd>
+                <input type="text" class="ipt8" name="custom_url" value='{$vo.custom_url}' />
+            </dd>
+        </dl>
+        <dl>
+            <dt> 排序值：</dt>
+            <dd>
+                <input type="text" class="ipt1" name="listorder" value="{$vo.listorder}" />
+            </dd>
+        </dl>
 
-                <dl>
-                    <dt> 状态：</dt>
-                    <dd>
-                        <select name="status">
-                            
-                            <option value="1" <eq name="vo.status" value="1">selected="selected"</eq>>显示</option>
-                            <option value="0" <eq name="vo.status" value="0">selected="selected"</eq>>不显示</option>
-                        </select>
-                    </dd>
-                </dl>
-                <dl>
-                    <dt>分类标题：</dt>
-                    <dd>
-                        <input type="text" class="ipt6" name="title" value="{$vo.title}" />
-                        <span class="fontcolor">title（分类标题）针对搜索引擎设置的标题</span>
-                    </dd>
-                </dl>
-                <dl>
-                    <dt>分类关键词：</dt>
-                    <dd>
-                        <input type="text" class="ipt6" name="keywords" value="{$vo.keywords}" />
-                        <span class="fontcolor">meta keywords（分类关键词）关键字中间用半角逗号隔开</span>
-                    </dd>
-                </dl>
-                <dl>
-                    <dt>分类描述：</dt>
-                    <dd>
-                        <textarea name="description" style="width:400px; height:60px; padding-left: 3px; float: left;">{$vo.description}</textarea>
-                        <span class="fontcolor" style="width: 260px; float: left;">meta description（分类描述）针对搜索引擎设置的网页描述</span>
-                    </dd>
-                </dl>
-                <dl>
-                    <dt>左侧板：</dt>
-                    <dd>
-                        <volist name="cates" id="c">
-                            <div><input type="checkbox" name="leftset[]" value="{$c.id}"/> {$c.catname} </div>
-                        </volist>
-                    </dd>
-                </dl>
-                </div>
-                <div class="form_b">
+        <dl>
+            <dt> 状态：</dt>
+            <dd>
+                <select name="status">
                     
-                    <input type="hidden" name="id" value="{$vo.id}">
-                    <input type="submit" class="submit btn7" id="submit" value="提 交">
-                </div>
-               </form>
-            </div>
-
-            
+                    <option value="1" <eq name="vo.status" value="1">selected="selected"</eq>>显示</option>
+                    <option value="0" <eq name="vo.status" value="0">selected="selected"</eq>>不显示</option>
+                </select>
+            </dd>
+        </dl>
+        <dl>
+            <dt>分类标题：</dt>
+            <dd>
+                <input type="text" class="ipt6" name="title" value="{$vo.title}" />
+                <span class="fontcolor">title（分类标题）针对搜索引擎设置的标题</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>分类关键词：</dt>
+            <dd>
+                <input type="text" class="ipt6" name="keywords" value="{$vo.keywords}" />
+                <span class="fontcolor">meta keywords（分类关键词）关键字中间用半角逗号隔开</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>分类描述：</dt>
+            <dd>
+                <textarea name="description" style="width:400px; height:60px; padding-left: 3px; float: left;">{$vo.description}</textarea>
+                <span class="fontcolor" style="width: 260px; float: left;">meta description（分类描述）针对搜索引擎设置的网页描述</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>左侧板：</dt>
+            <dd>
+                <select id="left-set">
+                    <option value="0"> 禁用 </option>
+                <volist name="cates" id="c">
+                    <option value="{$c.id}" <if condition="$vo.leftset_last eq $c['id']">selected</if>> {$c.catname}</option> 
+                </volist>
+                </select>
+                <span class="fontcolor">列表页面左侧的mini框，用于显示其他分类的热门信息。<br/>默认使用的模板为：pbulic/left,默认显示的条数为：5</span>
+                <div id="leftset-html">{$vo.leftset_html}</div>
+            </dd>
+        </dl>
+        <dl>
+            <dt> 列表页模板：</dt>
+            <dd>
+                <input type="text" class="ipt6" name="list_tpl" value="{$vo.list_tpl}" placeholder="默认"/>
+                <span class="fontcolor">模型的列表页模板，例如：article/index，默认为模型的index模板页面</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt> 详情页模板：</dt>
+            <dd>
+                <input type="text" class="ipt6" name="detail_tpl" value="{$vo.detail_tpl}" placeholder="默认"/>
+                <span class="fontcolor">模型的详情页模板，例如：content/single_page，默认为模型的show或者index模板页面</span>
+            </dd>
+        </dl>
         </div>
+        
+        <div class="form_b">
+            <input type="hidden" name="id" value="{$vo.id}">
+            <input type="submit" class="submit btn7" id="submit" value="提 交">
+        </div>
+       </form>
+    </div>
+</div>
+    <script type="text/javascript">
+        $('select#left-set').bind('change',function(){
+            var this_cateid = $(this).val();
+            if(this_cateid==0){
+                if(confirm('确定要禁用已设置的左侧板吗？')){
+                    $('.selected-item').remove();
+                }
+            }else{
+                var this_catename = $(this).find("option:selected").text();
+                var goon = 1;
+                $('.selected-item').each(function(){
+                   if(parseInt($(this).children('input[name^="leftset[id]"]').val()) == this_cateid) {
+                        alert('已存在该分类！');
+                        goon = 0;
+                   }
+                });
+                if(goon==1){
+                    var leftset_html = '<div class="selected-item">';
+                    leftset_html += '<span><b><i>'+this_catename+'</i></b></span> ';
+                    leftset_html += '<span> 模板：<input class="ipt2" type="text" name="leftset[tpl][]"></span> ';
+                    leftset_html += '<span> 条数：<input class="ipt1" type="text" name="leftset[lmt][]"></span> ';
+                    leftset_html += '<span> 排序：<input class="ipt1" type="text" name="leftset[sort][]"></span> ';
+                    leftset_html += '<input type="hidden" name="leftset[id][]" value="'+this_cateid+'"/>';
+                    leftset_html += '<a class="close-selected-item">关闭</a>';
+                    leftset_html += '</div> ';
+                    $('#leftset-html').append(leftset_html);
+                }
+            }
+        });
+        $('#leftset-html').delegate('a.close-selected-item','click',function(){if(confirm('确定要关闭该项吗？'))$(this).parent().remove();});
+    </script>
+    <style type="text/css">
+        .selected-item{border:1px dashed #cccccc;padding:3px;margin-top: 2px;}
+        .selected-item span{margin-right:5px; }
+    </style>
 <include file="Public:footer" />

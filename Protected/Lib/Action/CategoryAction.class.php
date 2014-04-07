@@ -60,6 +60,27 @@ class CategoryAction extends CommonAction{
         $model = M($name);
         $id = $_REQUEST [$model->getPk()];
         $vo = $model->getById($id);
+        $vo['leftset_last'] = 0;
+        $leftset_html = '';
+        if(!empty($vo['leftset'])){
+            $leftset = json_decode($vo['leftset'],true);
+            foreach ($leftset as $key => $item) {
+                $catdata = D('Category')->where('level=1')->find($item['id']); 
+                if(!empty($catdata['catname'])){
+                    $leftset_html .= '<div class="selected-item">';
+                    $leftset_html .= '<span><b><i>'.$catdata['catname'].'</i></b></span> ';
+                    $leftset_html .= '<span>模板：<input class="ipt2" type="text" name="leftset[tpl][]" value="'.$item['tpl'].'"/></span> ';
+                    $leftset_html .= '<span>条数：<input class="ipt1" type="text" name="leftset[lmt][]" value="'.$item['lmt'].'"/></span> ';
+                    $leftset_html .= '<span>排序：<input class="ipt1" type="text" name="leftset[sort][]" value="'.$item['sort'].'"/></span> ';
+                    $leftset_html .= '<input type="hidden" name="leftset[id][]" value="'.$item['id'].'">';
+                    $leftset_html .= '<a class="close-selected-item">关闭</a>';
+                    $leftset_html .= '</div>';
+                    $vo['leftset_last'] = $item['id'];
+                }
+            }
+
+        }
+        $vo['leftset_html'] = $leftset_html;
         $this->assign('vo', $vo);
         $this->display();
     }
