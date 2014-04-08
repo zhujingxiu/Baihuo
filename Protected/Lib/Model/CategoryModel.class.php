@@ -2,17 +2,17 @@
 class CategoryModel extends CommonModel {
     // 自动验证设置
     protected $_validate=array(
-        array('catname','require','栏目名称必填！',1),
-        array('catname','','栏目已经存在',0,'unique',self::MODEL_BOTH),
+        array('catname','require','分类名称必填！',1),
+        array('catname','','分类已经存在',0,'unique',self::MODEL_BOTH),
     );
     
     // 自动填充设置
     protected $_auto=array(
-        array('path','tclm',3,'callback'),
+        array('path','format_path',3,'callback'),
         array('leftset','format_leftset',3,'callback'),
         array('status','1',self::MODEL_INSERT)
     );
-   function tclm(){
+   function format_path(){
         $pid=isset($_POST['pid'])?(int)$_POST['pid']:0;
         if($pid==0){
             $data=0;

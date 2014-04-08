@@ -597,3 +597,6 @@ font-size: 14px;
 .apptable tr{
 line-height: 28px;
 }
+.box_tit a{margin-left: 50px;}
+.selected-item{border:1px dashed #cccccc;padding:3px;margin-top: 2px;}
+.selected-item span{margin-right:5px; }

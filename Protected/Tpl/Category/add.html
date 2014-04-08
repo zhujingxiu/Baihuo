@@ -1,7 +1,7 @@
 <include file="Public:header" />
 <div class="main">
     <div class="box_tit">
-        <h2>添加分类</h2>
+        <h2>添加分类</h2> <a href="javascript:history.go(-1);">返回</a> 
     </div>
     <div class="form_list">
         <form method='post' id="form1" name="form1" action="{:U('Category/insert')}"  enctype="multipart/form-data">
@@ -101,7 +101,7 @@
         </dl>
         <dl>
             <dt>左侧板：</dt>
-            <dd><span class="fontcolor">列表页面左侧的mini框，用于显示其他分类的热门信息</span>
+            <dd>
                 <select id="left-set">
                     <option value="0"> 禁用 </option>
                 <volist name="cates" id="c">
@@ -165,8 +165,4 @@
         });
         $('#leftset-html').delegate('a.close-selected-item','click',function(){if(confirm('确定要关闭该项吗？'))$(this).parent().remove();});
     </script>
-    <style type="text/css">
-        .selected-item{border:1px dashed #cccccc;padding:3px;margin-top: 2px;}
-        .selected-item span{margin-right:5px; }
-    </style>
 <include file="Public:footer" />
