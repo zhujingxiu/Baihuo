@@ -94,7 +94,7 @@ class Think {
                 CORE_PATH.'Core/Log.class.php',    // 日志处理类
                 CORE_PATH.'Core/Dispatcher.class.php', // URL调度类
                 CORE_PATH.'Core/App.class.php',   // 应用程序类
-                CORE_PATH.'Core/Action.class.php', // 控制器类
+                CORE_PATH.'Core/Controller.class.php', // 控制器类
                 CORE_PATH.'Core/View.class.php',  // 视图类
             );
         }
@@ -175,11 +175,12 @@ class Think {
                 EXTEND_PATH.'Model/'.$file),true)) {
                 return ;
             }
-        }elseif(substr($class,-6)=='Action'){ // 加载控制器
+        }elseif(substr($class,-10)=='Controller'){ // 加载控制器
             if(require_array(array(
-                LIB_PATH.'Action/'.$group.$file,
-                $libPath.'Action/'.$file,
-                EXTEND_PATH.'Action/'.$file),true)) {
+                LIB_PATH.'Controller/'.$group.$file,
+                $libPath.'Controller/'.$file,
+                EXTEND_PATH.'Controller/'.$file),true)) {
+                
                 return ;
             }
         }elseif(substr($class,0,5)=='Cache'){ // 加载缓存驱动

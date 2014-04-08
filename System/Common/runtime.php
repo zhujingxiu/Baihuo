@@ -191,7 +191,7 @@ function build_app_dir() {
             TEMP_PATH,
             DATA_PATH,
             LIB_PATH.'Model/',
-            LIB_PATH.'Action/',
+            LIB_PATH.'Controller/',
             LIB_PATH.'Behavior/',
             LIB_PATH.'Widget/',
             );
@@ -203,19 +203,19 @@ function build_app_dir() {
         // 写入初始配置文件
         if(!is_file(CONF_PATH.'config.php'))
             file_put_contents(CONF_PATH.'config.php',"<?php\nreturn array(\n\t//'配置项'=>'配置值'\n);\n?>");
-        // 写入测试Action
-        if(!is_file(LIB_PATH.'Action/IndexAction.class.php'))
-            build_first_action();
+        // 写入测试Controller
+        if(!is_file(LIB_PATH.'Controller/IndexController.class.php'))
+            build_first_controller();
     }else{
         header('Content-Type:text/html; charset=utf-8');
         exit('项目目录不可写，目录无法自动生成！<BR>请使用项目生成器或者手动生成项目目录~');
     }
 }
 
-// 创建测试Action
-function build_first_action() {
+// 创建测试Controller
+function build_first_controller() {
     $content = file_get_contents(THINK_PATH.'Tpl/default_index.tpl');
-    file_put_contents(LIB_PATH.'Action/IndexAction.class.php',$content);
+    file_put_contents(LIB_PATH.'Controller/IndexController.class.php',$content);
 }
 
 // 生成目录安全文件

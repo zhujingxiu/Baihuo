@@ -10,13 +10,13 @@
 // +----------------------------------------------------------------------
 
 /**
- * ThinkPHP Action控制器基类 抽象类
+ * ThinkPHP Controller控制器基类 抽象类
  * @category   Think
  * @package  Think
  * @subpackage  Core
  * @author   liu21st <liu21st@gmail.com>
  */
-abstract class Action {
+abstract class Controller {
 
     /**
      * 视图实例对象
@@ -53,13 +53,13 @@ abstract class Action {
     }
 
    /**
-     * 获取当前Action名称
+     * 获取当前Controller名称
      * @access protected
      */
-    protected function getActionName() {
+    protected function getControllerName() {
         if(empty($this->name)) {
-            // 获取Action名称
-            $this->name     =   substr(get_class($this),0,-6);
+            // 获取Controller名称
+            $this->name     =   substr(get_class($this),0,-10);
         }
         return $this->name;
     }
