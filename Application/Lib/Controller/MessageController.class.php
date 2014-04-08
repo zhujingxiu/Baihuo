@@ -1,6 +1,6 @@
 <?php
 
-class MessageAction extends CommonAction{
+class MessageController extends CommonController{
     public function index() {
        if(IS_POST){
            

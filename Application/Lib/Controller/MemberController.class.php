@@ -1,6 +1,6 @@
 <?php
 // 后台用户模块
-class MemberAction extends CommonAction {
+class MemberController extends CommonController {
     public function index() {
         if(isset($_SESSION['account'])) {
             $map['id']=array('eq',$_SESSION['id']);

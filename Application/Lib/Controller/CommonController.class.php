@@ -1,6 +1,6 @@
 <?php
 /*前台动作基类*/
-class CommonAction extends Action {
+class CommonController extends Controller {
     //初始化
     function _initialize(){
         header("Content-Type:text/html; charset=utf-8");
@@ -93,7 +93,7 @@ class CommonAction extends Action {
         $idlist= substr($idlist, 0, strlen($idlist)-1);
         $map['catid'] = array('in',$idlist);
         
-        $name = $this->getActionName();
+        $name = $this->getControllerName();
         
         //获取分页设置
         $Model=M('Model');
@@ -133,7 +133,7 @@ class CommonAction extends Action {
     public function show()
     {
         $id= I('id');
-        $name = $this->getActionName();
+        $name = $this->getControllerName();
         
         D($name)->where('id='.$id)->setInc('hits',1);//浏览次数
        

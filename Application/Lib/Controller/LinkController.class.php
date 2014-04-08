@@ -1,6 +1,6 @@
 <?php
 
-class LinkAction extends CommonAction {
+class LinkController extends CommonController {
 
     public function index(){
         //友情链接

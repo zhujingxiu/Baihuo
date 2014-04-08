@@ -1,6 +1,6 @@
 <?php
 
-class ContentAction extends CommonAction{
+class ContentController extends CommonController{
     public function index() {
         
         $id = I('id');

@@ -1,6 +1,6 @@
 <?php
 
-class OrderAction extends CommonAction{
+class OrderController extends CommonController{
     public function index() {
        if(!isset($_SESSION['account'])){
             $this->redirect('Member/login');

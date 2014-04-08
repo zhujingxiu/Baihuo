@@ -1,6 +1,6 @@
 <?php
 
-class IndexAction extends CommonAction {
+class IndexController extends CommonController {
 
     public function index(){
         

@@ -1,6 +1,6 @@
 <?php
 
-class AnnounceAction extends CommonAction{
+class AnnounceController extends CommonController{
 
         public function index() {
 

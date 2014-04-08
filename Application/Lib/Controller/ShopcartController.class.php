@@ -1,6 +1,6 @@
 <?php
 
-class ShopcartAction extends CommonAction{
+class ShopcartController extends CommonController{
     public function index() {
         
         if(!isset($_SESSION['account'])){

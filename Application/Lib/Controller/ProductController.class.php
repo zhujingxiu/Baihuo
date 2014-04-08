@@ -1,6 +1,6 @@
 <?php
 
-class ProductAction extends CommonAction{
+class ProductController extends CommonController{
     //过滤查询字段
     function _filter(&$map){
         
