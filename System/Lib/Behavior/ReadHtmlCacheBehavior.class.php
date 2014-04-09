@@ -57,7 +57,7 @@ class ReadHtmlCacheBehavior extends Behavior {
                 $html   =   $htmls[$actionName]; // 所有操作的静态规则
             }elseif(isset($htmls['*'])){
                 $html   =   $htmls['*']; // 全局静态规则
-            }elseif(isset($htmls['empty:index']) && !class_exists(MODULE_NAME.'Action')){
+            }elseif(isset($htmls['empty:index']) && !class_exists(MODULE_NAME.'Controller')){
                 $html   =    $htmls['empty:index']; // 空模块静态规则
             }elseif(isset($htmls[$moduleName.':_empty']) && $this->isEmptyAction(MODULE_NAME,ACTION_NAME)){
                 $html   =    $htmls[$moduleName.':_empty']; // 空操作静态规则
@@ -115,7 +115,7 @@ class ReadHtmlCacheBehavior extends Behavior {
 
     //检测是否是空操作
     static private function isEmptyAction($module,$action) {
-        $className  =   $module.'Action';
+        $className  =   $module.'Controller';
         $class      =   new $className;
         return !method_exists($class,$action);
     }
