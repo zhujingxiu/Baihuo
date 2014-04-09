@@ -20,7 +20,7 @@ class CommonController extends Controller {
             }
         }
         
-        $this->assign('nav_list',$nav_list);
+        $this->nav_list = $nav_list;
         
         //每日流量统计
         $tjdate=D('Tjdate');
@@ -57,10 +57,10 @@ class CommonController extends Controller {
    
     //SEO赋值
     public function seo($title,$keywords,$description,$positioin=''){
-    	$this->assign('title',$title);
-    	$this->assign('keywords',$keywords);
-    	$this->assign('description',$description);
-    	$this->assign('position',$positioin);
+    	$this->title = $title;
+    	$this->keywords = $keywords;
+    	$this->description = $description;
+    	$this->position = $positioin;
        
     }
     //URL转换
@@ -121,9 +121,25 @@ class CommonController extends Controller {
         $title=  substr($title, 0, strlen($title)-1);
         
         $this->seo(($catdata['title'])?$catdata['title']:$title, ($catdata['keywords'])?$catdata['keywords']:C(SITE_KEYWORDS), ($catdata['description'])?$catdata['description']:C(SITE_DESCRIPTION), $position);
-        $this->assign("data", $catdata);
-        $this->assign("page", $page);
-        $this->assign("list", $list);
+        $this->data = $catdata;
+        $this->page = $page;
+        $this->list = $list;
+        $leftset = $this->left_side($id);
+
+        $leftset_html = '';
+        if($leftset){
+            foreach ($leftset as $key => $item) {
+                $tmp = array();
+                $tmp = $item;
+                $tmp['catename'] = getCategoryName($item['cateid']);
+                $tmp['modelname'] = getModuleById($item['cateid']);
+                $tmp['data'] = D($tmp['modelname'])->field('id,title,thumb,create_time')->where("catid = '".$item['cateid']."'")->order('create_time desc')->limit($item['lmt'])->select();
+                $this->left = $tmp;
+                $leftset_html .= $this->fetch($item['tpl']);
+            }
+        }
+        $this->leftset_html = $leftset_html;
+
         if(!empty($catdata['list_tpl'])){
             $this->display($catdata['list_tpl']); 
         }else{
@@ -162,10 +178,28 @@ class CommonController extends Controller {
         foreach ($Chainlist as $key => $value) {
             $data['content']=preg_replace('/'.$value['keyword'].'/i',"<a href=".$value['url']." target=".$value['target'].">".$value['keyword']."</a>", $data['content'],$value['number']);
         }
+        $leftset_html = '';
+        $this->data = $data;
+        $this->prevdata = $prevdata;
+        $this->nextdata = $nextdata;
 
-        $this->data=$data;
-        $this->prevdata=$prevdata;
-        $this->nextdata=$nextdata;
+        if($data['catid']){
+            $leftset = $this->left_side($data['catid']);
+            if($leftset){
+                foreach ($leftset as $key => $item) {
+                    $tmp = array();
+                    $tmp = $item;
+                    $tmp['catename'] = getCategoryName($item['cateid']);
+                    $tmp['modelname'] = getModuleById($item['cateid']);
+                    $tmp['data'] = D($tmp['modelname'])->field('id,title,thumb,create_time')->where("catid = '".$item['cateid']."'")->order('create_time desc')->limit($item['lmt'])->select();
+                    $this->left = $tmp;
+                    $leftset_html .= $this->fetch($item['tpl']);
+                }
+            }
+        }else{
+            $leftset_html .= $this->fetch('public:left_about');
+        }
+        $this->leftset_html = $leftset_html;
         //Cookie::set('_currentUrl_', __SELF__);
         session('_currentUrl_', __SELF__);
         if(!empty($data['category']['detail_tpl'])){
@@ -175,6 +209,33 @@ class CommonController extends Controller {
         }
     }
     
-    
+    protected function left_side($cateid,$last_level=false){
+        if(!$cateid){
+            return array();
+        }
+        if($last_level){
+            $parent_cate = M('category')->field("pid")->find($cateid);
+            $cate = M('category')->field("leftset")->find($parent_cate['pid']);
+        }else{
+            $cate = M('category')->field("leftset")->find($cateid);    
+        }
+        return !empty($cate['leftset']) ? $this->doLeftsetSort(json_decode($cate['leftset'],true)) : array();
+    }
+
+    protected function doLeftsetSort($leftset){
+        $data = array();
+        if($leftset){
+            foreach ($leftset as $key => $item) {
+                if(!$item['id']){ continue;}
+                $item['cateid'] = $item['id'];
+                $sort = empty($item['cateid']) ? 0 : (int)$item['sort'] ;
+                $item['tpl'] = empty($item['tpl']) ? 'left' : trim($item['tpl']);
+                $item['lmt'] = empty($item['lmt']) ? 10 : (int)$item['lmt'];
+                $data[$sort.'-'.$item['cateid'].'-'.$key] = $item;
+            }
+            ksort($data);
+        }
+        return $data;
+    }
     
 }

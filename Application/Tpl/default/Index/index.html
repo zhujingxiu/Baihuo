@@ -4,7 +4,14 @@
         <div class="clearfix mart10">
             <div class="boxnav">
                 <h3>楼层导航</h3>
-                <view_block:other settag="shopping_guide" />
+                <ul class="boxnav-ul">
+                <view_block:category catid="87">
+                    <li>
+                        <i></i>
+                        <a href="{:U('Article/index',array('id'=>$category['id']))}">{$category.catname}</a>
+                    </li>
+                </view_block:category>
+                </ul>
             </div>
             <div class="boxnav-r">
                 <div class="jianj">

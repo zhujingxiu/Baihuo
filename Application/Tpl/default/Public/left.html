@@ -1,10 +1,14 @@
-<dl class="left-list">
-    <dt><em>关于百货</em>About</dt>
-    <dd class="left-l-tab">
-        <ul class="tab-list">
-            <view_block:category catid="85">
-                <li <if condition="$category['id'] eq I('id')">class="tabon"</if>><a href="{:U('Content/index',array('id'=>$category['id']))}">{$category.catname}</a></li> 
-            </view_block:category>
-        </ul>
-    </dd>
-</dl>
+<notempty name="left">
+<div class="boxnav left-mode">
+	<h3>{$left.catename}</h3>
+	<ul class="boxnav-ul">
+        <volist name="left.data" id="item">
+            <li><i></i>
+            	<a href='{:U("$item[modelname]/index",array("id"=>$item["id"]))}'title="{$item.create_time|date='Y-m-d',###} {$item.title}">
+            	{$item.title|msubstr=0,10}
+            	</a>
+            </li> 
+        </volist>
+    </ul>
+</div>
+</notempty>

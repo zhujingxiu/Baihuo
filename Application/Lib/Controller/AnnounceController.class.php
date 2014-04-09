@@ -2,8 +2,9 @@
 
 class AnnounceController extends CommonController{
 
-        public function index() {
-
+    public function index() {
+			C('SHOW_PAGE_TRACE',false);
+        	C('SHOW_RUN_TIME',false);
 	        //获取分页设置
 	        $Model=M('Model');
 	        $map['table']=array('eq','Announce');
@@ -24,11 +25,13 @@ class AnnounceController extends CommonController{
 	        $page = $Page->show();
 	        
 	        $this->seo('最新公告 - '.C("SITE_NAME"), C("SITE_KEYWORDS"), C("SITE_DESCRIPTION"), '');
-	        
+	        $this->leftset_html = $this->fetch('public:left_about');
 	        $this->assign("page", $page);
 	        $this->assign("list", $list);
 	        $this->display(); 
     }
+
+
 }
 
 ?>
