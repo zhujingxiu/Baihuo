@@ -56,8 +56,8 @@ class CategoryController extends CommonController{
     function edit() {
         $cates =M('category')->where("level = 1 AND modelname = 'Article' AND status = 1")->order('listorder ,id ')->select(); //加载分类
         $this->assign('cates', $cates);
-        $name = $this->getControllerName();
-        $model = M($name);
+        
+        $model = M('Category');
         $id = $_REQUEST [$model->getPk()];
         $vo = $model->getById($id);
         $vo['leftset_last'] = 0;
@@ -88,8 +88,7 @@ class CategoryController extends CommonController{
     function insert() {
         $this->_upload();
         
-        $name = $this->getControllerName();
-        $model = D($name);
+        $model = D('Category');
         if (false === $model->create()) {
             $this->error($model->getError());
         }
@@ -109,8 +108,7 @@ class CategoryController extends CommonController{
     function update() {
         $this->_upload();
         
-        $name = $this->getControllerName();
-        $model = D($name);
+        $model = D('Category');
         if (false === $model->create()) {
             $this->error($model->getError());
         }
